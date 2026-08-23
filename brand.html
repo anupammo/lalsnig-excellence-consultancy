@@ -268,8 +268,15 @@
         <div class="col-md-4">
           <article class="ls-card h-100">
             <div class="ls-card__media">
-              <picture><source srcset="assets/img/analytics-dashboard-charts.webp" type="image/webp">
-              <img src="assets/img/analytics-dashboard-charts.jpg" width="900" height="600" loading="lazy" alt="Laptop showing performance charts beside a planning calendar"></picture>
+              <picture><source type="image/webp" sizes="(min-width: 768px) 360px, calc(100vw - 24px)"
+        srcset="assets/img/analytics-dashboard-charts-480.webp 480w,
+                assets/img/analytics-dashboard-charts-720.webp 720w,
+                assets/img/analytics-dashboard-charts.webp 900w">
+              <img src="assets/img/analytics-dashboard-charts.jpg"
+                   sizes="(min-width: 768px) 360px, calc(100vw - 24px)"
+                   srcset="assets/img/analytics-dashboard-charts-480.jpg 480w,
+                           assets/img/analytics-dashboard-charts-720.jpg 720w,
+                           assets/img/analytics-dashboard-charts.jpg 900w" width="900" height="600" loading="lazy" alt="Laptop showing performance charts beside a planning calendar"></picture>
             </div>
             <div class="ls-card__body"><h3 class="mb-2">Media card</h3><p class="mb-0" style="color:var(--ls-grey-700)">3:2 media well with a 4.5% hover zoom.</p></div>
           </article>
