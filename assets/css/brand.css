@@ -1,0 +1,657 @@
+/* ==========================================================================
+   LALSNIG Consulting - Brand & Design System
+   Phase 1 foundation. Every value below is a token; components never hard-code
+   colour, type or spacing. Palette and type were derived from the approved
+   company deck (LALSNIG EXCELLENCE CONSULTANCY.pdf) - see
+   docs/04-brand-design-system.md for provenance and the measured WCAG table.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. TOKENS
+   -------------------------------------------------------------------------- */
+:root {
+  /* --- Brand core: navy (authority, engineering rigour) ------------------ */
+  --ls-navy-900: #071729;
+  --ls-navy-800: #0B1F35;   /* primary brand surface - deck header bar      */
+  --ls-navy-700: #17375E;   /* secondary navy - deck card headers           */
+  --ls-navy-600: #1F497D;
+  --ls-navy-500: #376092;
+  --ls-navy-400: #4D76B8;
+  --ls-navy-100: #E4EAF2;
+  --ls-navy-050: #F2F5F9;
+
+  /* --- Brand accent: gold (excellence, the logo sigma) ------------------- */
+  --ls-gold-500: #C5912B;   /* logo gold - dark backgrounds & rules only    */
+  --ls-gold-400: #E0A93F;
+  --ls-gold-700: #8A6516;   /* accessible gold TEXT on light backgrounds    */
+  --ls-amber-500: #FFC000;  /* deck highlight - dark backgrounds only       */
+
+  /* --- Brand accent: orange (energy, call to action) --------------------- */
+  --ls-orange-500: #E46C0A; /* signature accent - graphics + text on navy   */
+  --ls-orange-400: #F58900;
+  --ls-orange-700: #B4540A; /* accessible CTA fill behind white text        */
+  --ls-orange-800: #9C4708;
+  --ls-orange-050: #FDF1E6;
+
+  /* --- Service-family accents (carried over from the deck) --------------- */
+  --ls-plum-600:  #604A7B;  /* Design & Review / Maintenance Support        */
+  --ls-steel-600: #376092;  /* Troubleshooting & RCA / Safety & Compliance  */
+  --ls-teal-600:  #215968;  /* Improve & Sustain                           */
+  --ls-clay-600:  #8C3F3D;  /* Performance Improvement / Training           */
+  --ls-blush-300: #E6B9B8;
+
+  /* --- Neutrals ---------------------------------------------------------- */
+  --ls-white:     #FFFFFF;
+  --ls-grey-050:  #F7F8FA;
+  --ls-grey-100:  #EEF1F5;
+  --ls-grey-200:  #E1E6ED;
+  --ls-grey-300:  #D8DEE7;
+  --ls-grey-500:  #8A96A6;
+  --ls-grey-600:  #5A6675;
+  --ls-grey-700:  #4A5563;
+  --ls-grey-900:  #2A3442;
+
+  /* --- Semantic roles ---------------------------------------------------- */
+  --ls-bg:              var(--ls-white);
+  --ls-bg-subtle:       var(--ls-grey-050);
+  --ls-bg-inverse:      var(--ls-navy-800);
+  --ls-text:            var(--ls-navy-800);
+  --ls-text-muted:      var(--ls-grey-700);
+  --ls-text-on-inverse: var(--ls-white);
+  --ls-text-on-inverse-muted: var(--ls-grey-300);
+  --ls-border:          var(--ls-grey-200);
+  --ls-border-strong:   var(--ls-grey-300);
+  --ls-accent:          var(--ls-orange-500);
+  --ls-accent-cta:      var(--ls-orange-700);
+  --ls-accent-cta-hover:var(--ls-orange-800);
+  --ls-focus:           var(--ls-orange-500);
+
+  /* --- Typography -------------------------------------------------------- */
+  --ls-font-display: "Barlow Semi Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --ls-font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --ls-font-serif: "Cormorant Garamond", "Iowan Old Style", Georgia, "Times New Roman", serif;
+
+  /* Fluid modular scale (1.25 major third at the top end) */
+  --ls-fs-hero:  clamp(2.5rem, 1.45rem + 4.2vw, 4.5rem);
+  --ls-fs-h1:    clamp(2rem, 1.45rem + 2.2vw, 3.25rem);
+  --ls-fs-h2:    clamp(1.625rem, 1.3rem + 1.3vw, 2.5rem);
+  --ls-fs-h3:    clamp(1.25rem, 1.13rem + 0.5vw, 1.625rem);
+  --ls-fs-h4:    clamp(1.0625rem, 1.02rem + 0.2vw, 1.1875rem);
+  --ls-fs-lede:  clamp(1.0625rem, 1.01rem + 0.28vw, 1.3125rem);
+  --ls-fs-body:  1.0625rem;   /* 17px - comfortable for long technical copy */
+  --ls-fs-sm:    0.9375rem;
+  --ls-fs-xs:    0.8125rem;
+
+  --ls-lh-tight: 1.08;
+  --ls-lh-snug:  1.22;
+  --ls-lh-body:  1.68;
+
+  --ls-ls-display: -0.01em;
+  --ls-ls-eyebrow: 0.14em;
+  --ls-ls-caps:    0.06em;
+
+  /* --- Space (4px base, 8px rhythm) -------------------------------------- */
+  --ls-space-1: 0.25rem;
+  --ls-space-2: 0.5rem;
+  --ls-space-3: 0.75rem;
+  --ls-space-4: 1rem;
+  --ls-space-5: 1.5rem;
+  --ls-space-6: 2rem;
+  --ls-space-7: 3rem;
+  --ls-space-8: 4rem;
+  --ls-space-9: 6rem;
+  --ls-section-y: clamp(3.5rem, 2rem + 5vw, 6.5rem);
+
+  /* --- Radius, shadow, motion -------------------------------------------- */
+  --ls-radius-sm: 6px;
+  --ls-radius:    12px;
+  --ls-radius-lg: 20px;
+  --ls-radius-pill: 999px;
+
+  --ls-shadow-1: 0 1px 2px rgba(11, 31, 53, .06), 0 2px 8px rgba(11, 31, 53, .05);
+  --ls-shadow-2: 0 2px 6px rgba(11, 31, 53, .07), 0 12px 28px rgba(11, 31, 53, .09);
+  --ls-shadow-3: 0 8px 20px rgba(11, 31, 53, .10), 0 24px 56px rgba(11, 31, 53, .14);
+
+  --ls-ease: cubic-bezier(.22, .61, .36, 1);
+  --ls-dur:  .28s;
+
+  --ls-container-max: 1200px;
+
+  /* --- Bootstrap bridge --------------------------------------------------- */
+  --bs-body-font-family: var(--ls-font-body);
+  --bs-body-font-size: var(--ls-fs-body);
+  --bs-body-line-height: var(--ls-lh-body);
+  --bs-body-color: var(--ls-text);
+  --bs-body-bg: var(--ls-bg);
+  --bs-heading-color: var(--ls-navy-800);
+  --bs-border-color: var(--ls-border);
+  --bs-link-color: var(--ls-navy-600);
+  --bs-link-hover-color: var(--ls-orange-700);
+  --bs-emphasis-color: var(--ls-navy-900);
+  --bs-primary: var(--ls-navy-800);
+  --bs-primary-rgb: 11, 31, 53;
+  --bs-focus-ring-color: rgba(228, 108, 10, .45);
+  --bs-code-color: var(--ls-navy-600);   /* Bootstrap's default pink is off-brand */
+}
+
+/* --------------------------------------------------------------------------
+   2. BASE
+   -------------------------------------------------------------------------- */
+html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+body {
+  font-family: var(--ls-font-body);
+  font-size: var(--ls-fs-body);
+  line-height: var(--ls-lh-body);
+  color: var(--ls-text);
+  background: var(--ls-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, .ls-display {
+  font-family: var(--ls-font-display);
+  font-weight: 700;
+  line-height: var(--ls-lh-snug);
+  letter-spacing: var(--ls-ls-display);
+  color: var(--ls-navy-800);
+  text-wrap: balance;
+}
+h1 { font-size: var(--ls-fs-h1); }
+h2 { font-size: var(--ls-fs-h2); }
+h3 { font-size: var(--ls-fs-h3); }
+h4 { font-size: var(--ls-fs-h4); font-weight: 600; }
+p  { text-wrap: pretty; }
+
+a { text-underline-offset: .18em; }
+
+:focus-visible {
+  outline: 3px solid var(--ls-focus);
+  outline-offset: 3px;
+  border-radius: var(--ls-radius-sm);
+}
+
+img { max-width: 100%; height: auto; }
+
+.ls-container { max-width: var(--ls-container-max); }
+
+.ls-skip-link {
+  position: absolute; left: 50%; top: 0; transform: translate(-50%, -120%);
+  z-index: 2000; background: var(--ls-navy-800); color: var(--ls-white);
+  padding: .75rem 1.25rem; border-radius: 0 0 var(--ls-radius) var(--ls-radius);
+  font-weight: 600; text-decoration: none;
+  transition: transform var(--ls-dur) var(--ls-ease);
+}
+.ls-skip-link:focus { transform: translate(-50%, 0); color: var(--ls-white); }
+
+/* --------------------------------------------------------------------------
+   3. TYPOGRAPHIC COMPONENTS
+   -------------------------------------------------------------------------- */
+.ls-eyebrow {
+  font-family: var(--ls-font-display);
+  font-size: var(--ls-fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--ls-ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--ls-gold-700);
+  margin-bottom: var(--ls-space-3);
+  display: block;
+}
+.ls-eyebrow--on-dark { color: var(--ls-gold-400); }
+
+.ls-hero-title { font-size: var(--ls-fs-hero); line-height: var(--ls-lh-tight); }
+
+.ls-lede {
+  font-size: var(--ls-fs-lede);
+  line-height: 1.6;
+  color: var(--ls-text-muted);
+  max-width: 62ch;
+}
+.ls-lede--on-dark { color: var(--ls-text-on-inverse-muted); }
+
+.ls-section-head { max-width: 68ch; margin-bottom: var(--ls-space-7); }
+
+/* Gold-to-orange rule under a section title - the deck's signature divider */
+.ls-rule::after {
+  content: ""; display: block; width: 64px; height: 3px;
+  background: linear-gradient(90deg, var(--ls-gold-500), var(--ls-orange-500));
+  margin-top: var(--ls-space-4); border-radius: 2px;
+}
+.ls-rule--center::after { margin-inline: auto; }
+
+.ls-hl { color: var(--ls-orange-500); }          /* on navy only  */
+.ls-hl-gold { color: var(--ls-gold-400); }       /* on navy only  */
+.ls-hl-ink { color: var(--ls-orange-700); }      /* on light only */
+
+.ls-serif-accent {
+  font-family: var(--ls-font-serif);
+  font-weight: 600;
+  font-style: italic;
+  color: var(--ls-orange-700);
+}
+
+.ls-quote {
+  font-family: var(--ls-font-serif);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.875rem);
+  line-height: 1.35;
+  color: var(--ls-navy-800);
+}
+
+.ls-caps-label {
+  font-family: var(--ls-font-display);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-ls-caps);
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   4. LAYOUT PRIMITIVES
+   -------------------------------------------------------------------------- */
+.ls-section { padding-block: var(--ls-section-y); }
+.ls-section--tight { padding-block: calc(var(--ls-section-y) * .62); }
+.ls-section--subtle { background: var(--ls-bg-subtle); }
+.ls-section--inverse { background: var(--ls-bg-inverse); color: var(--ls-text-on-inverse); }
+.ls-section--inverse h2,
+.ls-section--inverse h3,
+.ls-section--inverse h4 { color: var(--ls-white); }
+
+/* --------------------------------------------------------------------------
+   5. BUTTONS
+   -------------------------------------------------------------------------- */
+.ls-btn {
+  --_bg: var(--ls-accent-cta);
+  --_fg: var(--ls-white);
+  --_bd: var(--ls-accent-cta);
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-family: var(--ls-font-display);
+  font-weight: 600; font-size: 1.0625rem;
+  letter-spacing: .02em;
+  padding: .78rem 1.6rem;
+  border: 2px solid var(--_bd);
+  border-radius: var(--ls-radius-pill);
+  background: var(--_bg); color: var(--_fg);
+  text-decoration: none; cursor: pointer;
+  transition: background var(--ls-dur) var(--ls-ease),
+              border-color var(--ls-dur) var(--ls-ease),
+              color var(--ls-dur) var(--ls-ease),
+              transform var(--ls-dur) var(--ls-ease),
+              box-shadow var(--ls-dur) var(--ls-ease);
+}
+.ls-btn:hover {
+  --_bg: var(--ls-accent-cta-hover); --_bd: var(--ls-accent-cta-hover);
+  color: var(--ls-white); transform: translateY(-2px); box-shadow: var(--ls-shadow-2);
+}
+.ls-btn:active { transform: translateY(0); }
+
+.ls-btn--secondary { --_bg: transparent; --_fg: var(--ls-navy-800); --_bd: var(--ls-navy-800); }
+.ls-btn--secondary:hover { --_bg: var(--ls-navy-800); --_fg: var(--ls-white); --_bd: var(--ls-navy-800); color: var(--ls-white); }
+
+.ls-btn--on-dark { --_bg: transparent; --_fg: var(--ls-white); --_bd: rgba(255,255,255,.65); }
+.ls-btn--on-dark:hover { --_bg: var(--ls-white); --_fg: var(--ls-navy-800); --_bd: var(--ls-white); color: var(--ls-navy-800); }
+
+.ls-btn__icon { width: 1.05em; height: 1.05em; flex: none; }
+
+/* --------------------------------------------------------------------------
+   6. HEADER / NAV
+   -------------------------------------------------------------------------- */
+.ls-header {
+  position: sticky; top: 0; z-index: 1030;
+  background: rgba(255,255,255,.94);
+  backdrop-filter: saturate(180%) blur(12px);
+  border-bottom: 1px solid var(--ls-border);
+  transition: box-shadow var(--ls-dur) var(--ls-ease);
+}
+.ls-header.is-stuck { box-shadow: var(--ls-shadow-1); }
+.ls-header .navbar { padding-block: .55rem; }
+
+.ls-logo { display: inline-flex; align-items: center; gap: .7rem; text-decoration: none; }
+.ls-logo img { height: 46px; width: auto; display: block; }
+@media (max-width: 575.98px) { .ls-logo img { height: 36px; } }
+
+.ls-nav .nav-link {
+  font-family: var(--ls-font-display);
+  font-weight: 600;
+  font-size: 1.02rem;
+  letter-spacing: .015em;
+  color: var(--ls-navy-700);
+  padding: .5rem .85rem;
+  position: relative;
+}
+.ls-nav .nav-link:hover,
+.ls-nav .nav-link:focus-visible { color: var(--ls-orange-700); }
+.ls-nav .nav-link.is-active { color: var(--ls-navy-900); }
+.ls-nav .nav-link.is-active::after {
+  content: ""; position: absolute; left: .85rem; right: .85rem; bottom: .15rem;
+  height: 2px; background: var(--ls-orange-500); border-radius: 2px;
+}
+.navbar-toggler { border-color: var(--ls-border-strong); }
+.navbar-toggler:focus { box-shadow: none; }
+
+/* --------------------------------------------------------------------------
+   7. HERO
+   -------------------------------------------------------------------------- */
+.ls-hero {
+  position: relative;
+  background: var(--ls-navy-900);
+  color: var(--ls-white);
+  overflow: hidden;
+  isolation: isolate;
+}
+.ls-hero__media { position: absolute; inset: 0; z-index: -2; }
+.ls-hero__media img { width: 100%; height: 100%; object-fit: cover; }
+.ls-hero__scrim {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(100deg,
+    rgba(7,23,41,.97) 0%, rgba(7,23,41,.92) 42%,
+    rgba(11,31,53,.66) 72%, rgba(11,31,53,.48) 100%);
+}
+.ls-hero__inner { padding-block: clamp(3.5rem, 1.8rem + 8vw, 7.5rem); }
+.ls-hero h1 { color: var(--ls-white); }
+
+.ls-hero__promise { display: grid; gap: .3rem; margin-bottom: var(--ls-space-5); }
+.ls-hero__promise span {
+  font-family: var(--ls-font-display);
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.875rem);
+  font-weight: 600; letter-spacing: .01em; line-height: 1.2;
+}
+.ls-hero__promise span:nth-child(1) { color: var(--ls-white); }
+.ls-hero__promise span:nth-child(2) { color: var(--ls-amber-500); }
+.ls-hero__promise span:nth-child(3) { color: var(--ls-gold-400); }
+
+.ls-hero__card {
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.16);
+  border-radius: var(--ls-radius-lg);
+  padding: var(--ls-space-5);
+  backdrop-filter: blur(6px);
+}
+.ls-hero__card img { border-radius: var(--ls-radius); }
+.ls-hero__chip {
+  background: var(--ls-white); border-radius: var(--ls-radius);
+  padding: var(--ls-space-4); display: inline-block;
+}
+.ls-hero__chip img { height: 178px; width: auto; border-radius: 0; }
+@media (max-width: 575.98px) { .ls-hero__chip img { height: 140px; } }
+
+/* --------------------------------------------------------------------------
+   8. TRUST BAR (deck page 1 - four value pillars)
+   -------------------------------------------------------------------------- */
+.ls-trustbar { background: var(--ls-navy-800); color: var(--ls-white); }
+.ls-trustbar__grid {
+  display: grid; gap: 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.ls-trust {
+  display: flex; gap: var(--ls-space-4); align-items: flex-start;
+  padding: var(--ls-space-5);
+  border-right: 1px solid rgba(255,255,255,.14);
+}
+.ls-trust:last-child { border-right: 0; }
+@media (max-width: 991.98px) {
+  .ls-trust { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.14); }
+  .ls-trust:last-child { border-bottom: 0; }
+}
+.ls-trust__icon {
+  flex: none; width: 46px; height: 46px;
+  display: grid; place-items: center;
+  border: 2px solid var(--ls-gold-500); border-radius: 50%;
+  color: var(--ls-gold-400);
+}
+.ls-trust__icon svg { width: 22px; height: 22px; }
+/* A label, not a document heading — keeping it a <p> avoids an h1 -> h3 skip
+   in a section that has no visible heading of its own. */
+.ls-trust__title {
+  font-family: var(--ls-font-display); font-weight: 700;
+  font-size: 1.0625rem; line-height: var(--ls-lh-snug);
+  color: var(--ls-white); margin: 0 0 .15rem;
+  text-transform: uppercase; letter-spacing: var(--ls-ls-caps);
+}
+.ls-trust p { margin: 0; font-size: var(--ls-fs-sm); color: var(--ls-text-on-inverse-muted); line-height: 1.45; }
+
+/* --------------------------------------------------------------------------
+   9. CARDS
+   -------------------------------------------------------------------------- */
+.ls-card {
+  position: relative; height: 100%;
+  background: var(--ls-white);
+  border: 1px solid var(--ls-border);
+  border-radius: var(--ls-radius-lg);
+  overflow: hidden;
+  transition: transform var(--ls-dur) var(--ls-ease),
+              box-shadow var(--ls-dur) var(--ls-ease),
+              border-color var(--ls-dur) var(--ls-ease);
+}
+.ls-card:hover { transform: translateY(-4px); box-shadow: var(--ls-shadow-2); border-color: var(--ls-border-strong); }
+.ls-card__body { padding: var(--ls-space-5); }
+.ls-card__media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--ls-grey-100); }
+.ls-card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ls-ease); }
+.ls-card:hover .ls-card__media img { transform: scale(1.045); }
+
+/* Service card - coloured header band, mirroring deck pages 3-4 */
+.ls-service { --_accent: var(--ls-navy-700); }
+.ls-service__head {
+  background: var(--_accent); color: var(--ls-white);
+  padding: var(--ls-space-5) var(--ls-space-5) var(--ls-space-4);
+  display: flex; align-items: center; gap: var(--ls-space-4);
+}
+.ls-service__head h3 { color: var(--ls-white); margin: 0; font-size: 1.35rem; }
+.ls-service__num {
+  flex: none; width: 42px; height: 42px; display: grid; place-items: center;
+  border-radius: 50%; background: rgba(255,255,255,.16);
+  font-family: var(--ls-font-display); font-weight: 700; font-size: 1.05rem;
+  border: 1px solid rgba(255,255,255,.35);
+}
+.ls-service--1 { --_accent: var(--ls-plum-600); }
+.ls-service--2 { --_accent: var(--ls-steel-600); }
+.ls-service--3 { --_accent: var(--ls-clay-600); }
+.ls-service--4 { --_accent: var(--ls-navy-700); }
+.ls-service--5 { --_accent: var(--ls-teal-600); }
+.ls-service--6 { --_accent: var(--ls-gold-700); }
+.ls-service__kicker {
+  font-family: var(--ls-font-display); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--ls-ls-caps);
+  font-size: var(--ls-fs-xs); color: var(--_accent);
+  display: block; margin-bottom: var(--ls-space-2);
+}
+
+/* Capability pillar card - deck page 5 */
+.ls-pillar { border-top: 4px solid var(--ls-gold-500); }
+.ls-pillar__num {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--ls-gold-500); color: var(--ls-navy-900);
+  display: grid; place-items: center;
+  font-family: var(--ls-font-display); font-weight: 700; font-size: .95rem;
+  margin-bottom: var(--ls-space-4);
+}
+.ls-pillar h3 { text-transform: uppercase; letter-spacing: var(--ls-ls-caps); font-size: 1.125rem; }
+.ls-pillar__tagline {
+  font-style: italic; color: var(--ls-grey-700); font-size: var(--ls-fs-sm);
+  margin-block: var(--ls-space-3) var(--ls-space-4);
+}
+.ls-list { list-style: none; padding: 0; margin: 0; display: grid; gap: .55rem; }
+.ls-list li { position: relative; padding-left: 1.35rem; font-size: var(--ls-fs-sm); line-height: 1.5; color: var(--ls-grey-700); }
+.ls-list li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 7px; height: 7px; border-radius: 2px; background: var(--ls-orange-500);
+}
+
+/* Trainer card - deck page 2 */
+.ls-trainer__top { display: flex; gap: var(--ls-space-5); align-items: center; flex-wrap: wrap; }
+/* Fixed flex-basis so both trainer cards break to a stacked layout at the same
+   width, regardless of how long each person's role line happens to be. */
+.ls-trainer__top > div { flex: 1 1 260px; min-width: 0; }
+.ls-trainer__photo {
+  flex: none; width: 112px; height: 112px; border-radius: 50%;
+  object-fit: cover; border: 3px solid var(--ls-gold-500);
+  background: var(--ls-grey-100);
+}
+.ls-trainer__badge {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--ls-navy-800); color: var(--ls-white);
+  border-radius: var(--ls-radius-pill); padding: .3rem .9rem;
+  font-family: var(--ls-font-display); font-weight: 600;
+  font-size: var(--ls-fs-xs); letter-spacing: var(--ls-ls-caps); text-transform: uppercase;
+}
+.ls-trainer__exp {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--ls-navy-050); border: 1px solid var(--ls-navy-100);
+  color: var(--ls-navy-700); border-radius: var(--ls-radius-pill);
+  padding: .35rem 1rem; font-size: var(--ls-fs-sm); font-weight: 600;
+}
+.ls-trainer__exp b { color: var(--ls-orange-700); }
+.ls-subhead {
+  font-family: var(--ls-font-display); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--ls-ls-caps);
+  font-size: var(--ls-fs-xs); color: var(--ls-navy-700);
+  padding-bottom: .4rem; border-bottom: 2px solid var(--ls-gold-500);
+  display: inline-block; margin-bottom: var(--ls-space-3);
+}
+
+/* --------------------------------------------------------------------------
+   10. PROCESS STEPS (deck page 7)
+   -------------------------------------------------------------------------- */
+.ls-steps { display: grid; gap: var(--ls-space-5); grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); }
+.ls-step { text-align: center; position: relative; }
+.ls-step__disc {
+  width: 92px; height: 92px; margin: 0 auto var(--ls-space-4);
+  border-radius: 50%; display: grid; place-items: center;
+  color: var(--ls-white); position: relative; box-shadow: var(--ls-shadow-1);
+}
+.ls-step__disc svg { width: 38px; height: 38px; }
+.ls-step:nth-child(1) .ls-step__disc { background: var(--ls-orange-500); }
+.ls-step:nth-child(2) .ls-step__disc { background: var(--ls-navy-700); }
+.ls-step:nth-child(3) .ls-step__disc { background: var(--ls-plum-600); }
+.ls-step:nth-child(4) .ls-step__disc { background: var(--ls-clay-600); }
+.ls-step:nth-child(5) .ls-step__disc { background: var(--ls-teal-600); }
+.ls-step__num {
+  position: absolute; top: -4px; right: -4px;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--ls-white); color: var(--ls-navy-800);
+  border: 2px solid var(--ls-navy-100);
+  display: grid; place-items: center;
+  font-family: var(--ls-font-display); font-weight: 700; font-size: .875rem;
+}
+.ls-step h3 { font-size: 1.0625rem; text-transform: uppercase; letter-spacing: var(--ls-ls-caps); margin-bottom: .4rem; }
+.ls-step p { font-size: var(--ls-fs-sm); color: var(--ls-grey-700); margin: 0; }
+
+/* --------------------------------------------------------------------------
+   11. OUTCOMES STRIP + INDUSTRY TILES
+   -------------------------------------------------------------------------- */
+.ls-outcomes {
+  background: var(--ls-navy-800); border-radius: var(--ls-radius-lg);
+  padding: var(--ls-space-6) var(--ls-space-5);
+}
+.ls-outcome { text-align: center; color: var(--ls-white); }
+.ls-outcome svg { width: 34px; height: 34px; color: var(--ls-gold-400); margin-bottom: .6rem; }
+.ls-outcome strong {
+  display: block; font-family: var(--ls-font-display); font-size: 1.0625rem;
+  letter-spacing: var(--ls-ls-caps); text-transform: uppercase;
+}
+.ls-outcome span { font-size: var(--ls-fs-sm); color: var(--ls-text-on-inverse-muted); }
+
+.ls-industry {
+  position: relative; display: block; overflow: hidden;
+  border-radius: var(--ls-radius); aspect-ratio: 4 / 3; text-decoration: none;
+}
+.ls-industry img { width: 100%; height: 100%; object-fit: cover; transition: transform .55s var(--ls-ease); }
+.ls-industry:hover img { transform: scale(1.06); }
+.ls-industry__label {
+  position: absolute; inset: auto 0 0 0;
+  background: linear-gradient(180deg, rgba(7,23,41,0) 0%, rgba(7,23,41,.9) 62%);
+  color: var(--ls-white); padding: var(--ls-space-6) var(--ls-space-4) var(--ls-space-4);
+  font-family: var(--ls-font-display); font-weight: 600;
+  text-transform: uppercase; letter-spacing: var(--ls-ls-caps); font-size: var(--ls-fs-sm);
+}
+
+/* --------------------------------------------------------------------------
+   11b. ACCORDION (FAQ) - Bootstrap component re-skinned through its own vars
+   -------------------------------------------------------------------------- */
+.accordion {
+  --bs-accordion-color: var(--ls-text);
+  --bs-accordion-bg: var(--ls-white);
+  --bs-accordion-border-color: var(--ls-border);
+  --bs-accordion-border-radius: var(--ls-radius);
+  --bs-accordion-inner-border-radius: var(--ls-radius);
+  --bs-accordion-btn-color: var(--ls-navy-800);
+  --bs-accordion-btn-bg: var(--ls-white);
+  --bs-accordion-btn-padding-y: 1.05rem;
+  --bs-accordion-btn-padding-x: 1.25rem;
+  --bs-accordion-body-padding-y: 0 1.25rem 1.25rem;
+  --bs-accordion-active-color: var(--ls-navy-800);
+  --bs-accordion-active-bg: var(--ls-navy-050);
+  --bs-accordion-btn-focus-box-shadow: none;
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%230B1F35' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23B4540A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+.accordion-button {
+  font-family: var(--ls-font-display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  letter-spacing: .005em;
+}
+.accordion-button:not(.collapsed) { box-shadow: inset 0 -1px 0 var(--ls-border); }
+.accordion-button:focus-visible { outline: 3px solid var(--ls-focus); outline-offset: -3px; }
+.accordion-body { color: var(--ls-grey-700); padding-top: 1.1rem; }
+
+/* --------------------------------------------------------------------------
+   12. WHY-US LIST, CTA, FOOTER
+   -------------------------------------------------------------------------- */
+.ls-check { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--ls-space-4); }
+.ls-check li { display: flex; gap: var(--ls-space-4); align-items: flex-start; font-size: var(--ls-fs-lede); line-height: 1.5; }
+.ls-check svg { flex: none; width: 26px; height: 26px; color: var(--ls-orange-500); margin-top: .15rem; }
+
+.ls-cta {
+  background: linear-gradient(135deg, var(--ls-navy-800) 0%, var(--ls-navy-700) 100%);
+  color: var(--ls-white); border-radius: var(--ls-radius-lg);
+  padding: clamp(2rem, 1.2rem + 3vw, 3.5rem);
+  position: relative; overflow: hidden;
+}
+.ls-cta::after {
+  content: ""; position: absolute; right: -12%; top: -40%;
+  width: 46%; aspect-ratio: 1; border-radius: 50%;
+  background: radial-gradient(circle, rgba(228,108,10,.35) 0%, rgba(228,108,10,0) 68%);
+  pointer-events: none;
+}
+.ls-cta h2 { color: var(--ls-white); }
+
+.ls-contact-list { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--ls-space-4); }
+.ls-contact-list a { color: var(--ls-white); text-decoration: none; display: flex; gap: var(--ls-space-3); align-items: center; word-break: break-word; }
+.ls-contact-list a:hover { color: var(--ls-gold-400); text-decoration: underline; }
+.ls-contact-list svg { flex: none; width: 22px; height: 22px; color: var(--ls-gold-400); }
+
+.ls-footer { background: var(--ls-navy-900); color: var(--ls-text-on-inverse-muted); padding-block: var(--ls-space-7) var(--ls-space-5); }
+.ls-footer h2, .ls-footer h3 {
+  color: var(--ls-white); font-size: 1rem; text-transform: uppercase;
+  letter-spacing: var(--ls-ls-caps); margin-bottom: var(--ls-space-4);
+}
+.ls-footer a { color: var(--ls-grey-300); text-decoration: none; }
+.ls-footer a:hover { color: var(--ls-gold-400); text-decoration: underline; }
+.ls-footer__logo { background: var(--ls-white); border-radius: var(--ls-radius); padding: var(--ls-space-4) var(--ls-space-5); display: inline-block; }
+.ls-footer__logo img { height: 54px; width: auto; display: block; }
+.ls-footer__bottom {
+  border-top: 1px solid rgba(255,255,255,.12);
+  margin-top: var(--ls-space-6); padding-top: var(--ls-space-4);
+  font-size: var(--ls-fs-xs);
+}
+
+/* --------------------------------------------------------------------------
+   13. MOTION
+   -------------------------------------------------------------------------- */
+.ls-reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s var(--ls-ease), transform .6s var(--ls-ease); }
+.ls-reveal.is-visible { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .ls-reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+
+/* --------------------------------------------------------------------------
+   14. PRINT
+   -------------------------------------------------------------------------- */
+@media print {
+  .ls-header, .ls-hero__media, .ls-hero__scrim, .navbar-toggler, .ls-btn { display: none !important; }
+  body { color: #000; background: #fff; font-size: 11pt; }
+  .ls-section { padding-block: 1rem; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; }
+}

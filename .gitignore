@@ -1,0 +1,9 @@
+# Local tool state
+.claude/
+node_modules/
+.DS_Store
+Thumbs.db
+
+# Scratch
+*.log
+_diag*.html

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brand &amp; Design System | LALSNIG Consulting</title>
+<meta name="description" content="Phase 1 design system sign-off page: colour scheme, typography, spacing, components and logo usage for LALSNIG Consulting.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://anupammo.github.io/lalsnig-excellence-consultancy/brand.html">
+<meta name="theme-color" content="#0B1F35">
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/brand.css">
+<style>
+  .sw { border-radius: var(--ls-radius); overflow: hidden; border: 1px solid var(--ls-border); height: 100%; }
+  .sw__chip { height: 96px; display: grid; place-items: end start; padding: .6rem .8rem; font-size: .75rem; font-weight: 600; }
+  .sw__meta { padding: .7rem .8rem; font-size: .8125rem; line-height: 1.45; background: var(--ls-white); }
+  .sw__meta code { color: var(--ls-navy-700); font-size: .8125rem; }
+  .spec { border-bottom: 1px dashed var(--ls-border); padding-block: 1.1rem; }
+  .spec small { display: block; font-family: var(--ls-font-body); font-size: .75rem;
+                letter-spacing: .08em; text-transform: uppercase; color: var(--ls-grey-600); margin-bottom: .3rem; }
+  .tokentable code { font-size: .8125rem; }
+  .do  { border-left: 4px solid #1F7A4C; padding-left: 1rem; }
+  .dont{ border-left: 4px solid #A32020; padding-left: 1rem; }
+  .space-demo { background: var(--ls-orange-050); border: 1px solid var(--ls-orange-500); height: 22px; }
+</style>
+</head>
+<body>
+<a class="ls-skip-link" href="#main">Skip to main content</a>
+
+<header class="ls-header">
+  <nav class="navbar navbar-expand-lg" aria-label="Primary">
+    <div class="container ls-container">
+      <a class="ls-logo navbar-brand p-0 m-0" href="index.html">
+        <img src="assets/img/logo-horizontal.png" width="1043" height="300" alt="LALSNIG Consulting logo">
+      </a>
+      <span class="ls-caps-label ms-auto" style="color:var(--ls-grey-600);font-size:.8125rem">Phase 1 &middot; Design system v1.0</span>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="ls-section ls-section--tight ls-section--inverse">
+    <div class="container ls-container">
+      <span class="ls-eyebrow ls-eyebrow--on-dark">Brand foundation</span>
+      <h1 class="mb-3" style="color:var(--ls-white)">Colour, typography and components</h1>
+      <p class="ls-lede ls-lede--on-dark mb-0">
+        Everything on this page is the live production CSS &mdash; not a mock-up of it. Sign this off
+        and the whole site inherits it, because every component reads from the same tokens.
+        Source of truth: <code style="color:var(--ls-gold-400)">assets/css/brand.css</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Logo ========================================================= -->
+  <section class="ls-section" id="logo">
+    <div class="container ls-container">
+      <span class="ls-eyebrow">01 &middot; Logo</span>
+      <h2 class="ls-rule mb-5">Logo &amp; clear space</h2>
+      <div class="row g-4 align-items-center">
+        <div class="col-md-5">
+          <div class="p-5 rounded-4 text-center" style="background:var(--ls-white);border:1px solid var(--ls-border)">
+            <img src="assets/img/logo-lalsnig-consulting-420.png" width="420" height="443" alt="Primary logo on light background" style="height:190px;width:auto">
+          </div>
+          <p class="mt-3 mb-0" style="font-size:.9375rem;color:var(--ls-grey-700)">Primary &mdash; light backgrounds</p>
+        </div>
+        <div class="col-md-5">
+          <div class="p-5 rounded-4 text-center" style="background:var(--ls-navy-800)">
+            <span class="ls-footer__logo"><img src="assets/img/logo-horizontal.png" width="1043" height="300" alt="Horizontal lockup on a white chip over navy" style="height:56px;width:auto"></span>
+          </div>
+          <p class="mt-3 mb-0" style="font-size:.9375rem;color:var(--ls-grey-700)">Horizontal lockup for headers and footers &mdash; on navy, always on a white chip, never knocked out</p>
+        </div>
+        <div class="col-md-2">
+          <div class="p-3 rounded-4 text-center" style="background:var(--ls-navy-800)">
+            <img src="assets/img/icon-192.png" width="192" height="192" alt="App icon / favicon" style="width:100%;height:auto;border-radius:12px">
+          </div>
+          <p class="mt-3 mb-0" style="font-size:.9375rem;color:var(--ls-grey-700)">App icon</p>
+        </div>
+      </div>
+
+      <div class="row g-4 mt-4">
+        <div class="col-md-6"><div class="do"><h3 class="h5">Do</h3><ul class="ls-list"><li>Keep clear space equal to the height of the &ldquo;L&rdquo; on all four sides.</li><li>Minimum width 120&nbsp;px on screen / 30&nbsp;mm in print.</li><li>Use the white chip whenever the background is darker than <code>--ls-grey-100</code>.</li></ul></div></div>
+        <div class="col-md-6"><div class="dont"><h3 class="h5">Don&rsquo;t</h3><ul class="ls-list"><li>Recolour, outline, rotate or add effects to the mark.</li><li>Place the transparent logo directly on a photograph.</li><li>Re-typeset the wordmark &mdash; it is artwork, not live text.</li></ul></div></div>
+      </div>
+
+      <p class="mt-4 mb-0 p-3 rounded-3" style="background:var(--ls-orange-050);border:1px solid var(--ls-orange-500);font-size:.9375rem">
+        <strong>Open action:</strong> the current logo files are raster extractions from the company deck.
+        Request vector originals (AI/EPS/SVG) from the client before Phase 2 so the mark stays crisp at
+        every size. Tracked in <code>docs/03-progress-checklist.md</code>.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== Colour ======================================================= -->
+  <section class="ls-section ls-section--subtle" id="colour">
+    <div class="container ls-container">
+      <span class="ls-eyebrow">02 &middot; Colour</span>
+      <h2 class="ls-rule mb-3">Colour scheme</h2>
+      <p class="ls-lede mb-5">
+        Sampled directly from the approved company deck, then adjusted only where a pairing failed
+        WCAG&nbsp;2.1 AA. Contrast ratios below are measured, not estimated.
+      </p>
+
+      <h3 class="h5 mb-3">Brand core &mdash; navy</h3>
+      <div class="row g-3 row-cols-2 row-cols-md-4 row-cols-xl-6 mb-5">
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#071729;color:#fff">navy-900</div><div class="sw__meta"><code>#071729</code><br>Deepest ground, footer</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#0B1F35;color:#fff">navy-800</div><div class="sw__meta"><code>#0B1F35</code><br>Primary surface &middot; white 16.7:1 AAA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#17375E;color:#fff">navy-700</div><div class="sw__meta"><code>#17375E</code><br>On white 12.0:1 AAA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#1F497D;color:#fff">navy-600</div><div class="sw__meta"><code>#1F497D</code><br>Links &middot; on white 9.1:1 AAA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#376092;color:#fff">navy-500</div><div class="sw__meta"><code>#376092</code><br>On white 6.5:1 AA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#4D76B8;color:#fff">navy-400</div><div class="sw__meta"><code>#4D76B8</code><br>Decorative only</div></div></div>
+      </div>
+
+      <h3 class="h5 mb-3">Brand accents &mdash; gold &amp; orange</h3>
+      <div class="row g-3 row-cols-2 row-cols-md-4 row-cols-xl-6 mb-4">
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#C5912B;color:#071729">gold-500</div><div class="sw__meta"><code>#C5912B</code><br>Logo gold. On navy 5.9:1 AA. <strong>Fails on white (2.8:1)</strong></div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#E0A93F;color:#071729">gold-400</div><div class="sw__meta"><code>#E0A93F</code><br>Eyebrow on navy 7.9:1 AAA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#8A6516;color:#fff">gold-700</div><div class="sw__meta"><code>#8A6516</code><br>Gold <em>text</em> on light 5.3:1 AA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#FFC000;color:#071729">amber-500</div><div class="sw__meta"><code>#FFC000</code><br>Hero highlight on navy 10.1:1 AAA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#E46C0A;color:#071729">orange-500</div><div class="sw__meta"><code>#E46C0A</code><br>Signature accent. On navy 5.1:1 AA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#B4540A;color:#fff">orange-700</div><div class="sw__meta"><code>#B4540A</code><br>CTA fill &middot; white 5.0:1 AA</div></div></div>
+      </div>
+
+      <div class="p-4 rounded-3 mb-5" style="background:var(--ls-white);border:1px solid var(--ls-border)">
+        <h4 class="mb-2">The one rule that keeps this palette accessible</h4>
+        <p class="mb-0" style="color:var(--ls-grey-700)">
+          <strong>Gold and orange are dark-background colours.</strong> On navy they clear AA comfortably.
+          On white, <code>#C5912B</code> hits only 2.8:1 and <code>#E46C0A</code> only 3.3:1 &mdash; so on
+          light surfaces use <code>--ls-gold-700</code> for gold text, <code>--ls-orange-700</code> for CTA
+          fills, and keep <code>#E46C0A</code> for rules, icons and shapes where contrast is decorative.
+        </p>
+      </div>
+
+      <h3 class="h5 mb-3">Service-family accents (carried from the deck)</h3>
+      <div class="row g-3 row-cols-2 row-cols-md-5 mb-5">
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#604A7B;color:#fff">plum-600</div><div class="sw__meta"><code>#604A7B</code><br>Design &amp; review</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#376092;color:#fff">steel-600</div><div class="sw__meta"><code>#376092</code><br>Troubleshooting &amp; RCA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#8C3F3D;color:#fff">clay-600</div><div class="sw__meta"><code>#8C3F3D</code><br>Performance improvement</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#215968;color:#fff">teal-600</div><div class="sw__meta"><code>#215968</code><br>Improve &amp; sustain</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#8A6516;color:#fff">gold-700</div><div class="sw__meta"><code>#8A6516</code><br>Training &amp; competency</div></div></div>
+      </div>
+
+      <h3 class="h5 mb-3">Neutrals</h3>
+      <div class="row g-3 row-cols-2 row-cols-md-4 row-cols-xl-6">
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#F7F8FA;color:#0B1F35;border-bottom:1px solid #E1E6ED">grey-050</div><div class="sw__meta"><code>#F7F8FA</code><br>Alternating section band</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#EEF1F5;color:#0B1F35">grey-100</div><div class="sw__meta"><code>#EEF1F5</code><br>Media placeholder</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#E1E6ED;color:#0B1F35">grey-200</div><div class="sw__meta"><code>#E1E6ED</code><br>Default border</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#D8DEE7;color:#0B1F35">grey-300</div><div class="sw__meta"><code>#D8DEE7</code><br>Hover border, muted text on navy</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#4A5563;color:#fff">grey-700</div><div class="sw__meta"><code>#4A5563</code><br>Body copy on white 7.6:1 AAA</div></div></div>
+        <div class="col"><div class="sw"><div class="sw__chip" style="background:#2A3442;color:#fff">grey-900</div><div class="sw__meta"><code>#2A3442</code><br>Highest-emphasis neutral</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Typography =================================================== -->
+  <section class="ls-section" id="type">
+    <div class="container ls-container">
+      <span class="ls-eyebrow">03 &middot; Typography</span>
+      <h2 class="ls-rule mb-3">Typography</h2>
+      <p class="ls-lede mb-5">
+        Three self-hosted families, all SIL Open Font Licence, all subset to latin + latin-ext.
+        Total webfont payload: <strong>308&nbsp;KB</strong> across 10 files, zero third-party requests.
+      </p>
+
+      <div class="row g-4 gy-5 mb-5">
+        <div class="col-lg-4">
+          <h3 class="h5 mb-2">Barlow Semi Condensed</h3>
+          <p style="color:var(--ls-grey-700)">Display &amp; headings, 600/700. Condensed industrial voice that matches the deck&rsquo;s uppercase section bars; fits long technical headings without shrinking.</p>
+          <p class="mb-0" style="font-family:var(--ls-font-display);font-weight:700;font-size:2rem;line-height:1.1">CONVEYOR BELT<br>DESIGN &amp; REVIEW</p>
+        </div>
+        <div class="col-lg-4">
+          <h3 class="h5 mb-2">Inter</h3>
+          <p style="color:var(--ls-grey-700)">Body &amp; UI, variable 100&ndash;900. Large x-height and open apertures keep dense engineering copy readable at 17&nbsp;px on a phone.</p>
+          <p class="mb-0" style="font-size:1.0625rem;line-height:1.68">Capacity calculation, system layout, component selection and optimisation &mdash; 0123456789.</p>
+        </div>
+        <div class="col-lg-4">
+          <h3 class="h5 mb-2">Cormorant Garamond</h3>
+          <p style="color:var(--ls-grey-700)">Serif accent, 600 + italic. Echoes the serif wordmark in the logo. Reserved for pull-quotes and the &ldquo;Trainer name:&rdquo; label &mdash; never body copy.</p>
+          <p class="ls-quote mb-0">&ldquo;We build the capability to sustain it.&rdquo;</p>
+        </div>
+      </div>
+
+      <h3 class="h5 mb-3">Type scale (fluid &mdash; resize the window to see it move)</h3>
+      <div class="spec"><small>Hero &middot; --ls-fs-hero &middot; clamp(2.5rem, 1.45rem + 4.2vw, 4.5rem)</small><span class="ls-display ls-hero-title">Turn complexity into capability</span></div>
+      <div class="spec"><small>H1 &middot; --ls-fs-h1</small><p class="ls-display mb-0" style="font-size:var(--ls-fs-h1)">Conveyor belt consultants</p></div>
+      <div class="spec"><small>H2 &middot; --ls-fs-h2</small><h2 class="mb-0">Conveyor belt consulting, end to end</h2></div>
+      <div class="spec"><small>H3 &middot; --ls-fs-h3</small><h3 class="mb-0">Troubleshooting &amp; root cause analysis</h3></div>
+      <div class="spec"><small>Lede &middot; --ls-fs-lede</small><p class="ls-lede mb-0">Improving availability, reducing spillage, controlling downtime and increasing efficiency.</p></div>
+      <div class="spec"><small>Body &middot; --ls-fs-body &middot; 17px / 1.68</small><p class="mb-0">We are specialised conveyor belt consultants with hands-on experience in the design, operation, maintenance and troubleshooting of conveyor systems.</p></div>
+      <div class="spec"><small>Small &middot; --ls-fs-sm</small><p class="mb-0" style="font-size:var(--ls-fs-sm)">Belt width, speed and capacity verification</p></div>
+      <div class="spec"><small>Eyebrow &middot; --ls-fs-xs, 0.14em tracking</small><span class="ls-eyebrow mb-0">Our services</span></div>
+    </div>
+  </section>
+
+  <!-- ===== Space & radius =============================================== -->
+  <section class="ls-section ls-section--subtle" id="space">
+    <div class="container ls-container">
+      <span class="ls-eyebrow">04 &middot; Space, radius, elevation</span>
+      <h2 class="ls-rule mb-5">Spacing scale</h2>
+      <div class="row g-4">
+        <div class="col-lg-7">
+          <table class="table align-middle tokentable mb-0" style="background:var(--ls-white)">
+            <thead><tr><th scope="col">Token</th><th scope="col">Value</th><th scope="col">Used for</th><th scope="col" style="width:34%">Scale</th></tr></thead>
+            <tbody>
+              <tr><td><code>--ls-space-2</code></td><td>8px</td><td>Icon gaps</td><td><div class="space-demo" style="width:8px"></div></td></tr>
+              <tr><td><code>--ls-space-4</code></td><td>16px</td><td>Inline gaps, list rhythm</td><td><div class="space-demo" style="width:16px"></div></td></tr>
+              <tr><td><code>--ls-space-5</code></td><td>24px</td><td>Card padding</td><td><div class="space-demo" style="width:24px"></div></td></tr>
+              <tr><td><code>--ls-space-6</code></td><td>32px</td><td>Grid gutters</td><td><div class="space-demo" style="width:32px"></div></td></tr>
+              <tr><td><code>--ls-space-7</code></td><td>48px</td><td>Section-head margin</td><td><div class="space-demo" style="width:48px"></div></td></tr>
+              <tr><td><code>--ls-section-y</code></td><td>56&ndash;104px fluid</td><td>Section padding block</td><td><div class="space-demo" style="width:100%"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col-lg-5">
+          <div class="row g-3">
+            <div class="col-6"><div class="p-4 text-center" style="background:var(--ls-white);border:1px solid var(--ls-border);border-radius:var(--ls-radius-sm)"><code>--ls-radius-sm</code><br>6px</div></div>
+            <div class="col-6"><div class="p-4 text-center" style="background:var(--ls-white);border:1px solid var(--ls-border);border-radius:var(--ls-radius)"><code>--ls-radius</code><br>12px</div></div>
+            <div class="col-6"><div class="p-4 text-center" style="background:var(--ls-white);border:1px solid var(--ls-border);border-radius:var(--ls-radius-lg)"><code>--ls-radius-lg</code><br>20px</div></div>
+            <div class="col-6"><div class="p-4 text-center" style="background:var(--ls-white);border:1px solid var(--ls-border);border-radius:var(--ls-radius-pill)"><code>--pill</code><br>999px</div></div>
+            <div class="col-12"><div class="p-4" style="background:var(--ls-white);border-radius:var(--ls-radius);box-shadow:var(--ls-shadow-1)"><code>--ls-shadow-1</code> &mdash; resting card</div></div>
+            <div class="col-12"><div class="p-4" style="background:var(--ls-white);border-radius:var(--ls-radius);box-shadow:var(--ls-shadow-2)"><code>--ls-shadow-2</code> &mdash; hover / lifted</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Components =================================================== -->
+  <section class="ls-section" id="components">
+    <div class="container ls-container">
+      <span class="ls-eyebrow">05 &middot; Components</span>
+      <h2 class="ls-rule mb-5">Component library</h2>
+
+      <h3 class="h5 mb-3">Buttons</h3>
+      <div class="d-flex flex-wrap gap-3 mb-4">
+        <a class="ls-btn" href="#components">Primary CTA</a>
+        <a class="ls-btn ls-btn--secondary" href="#components">Secondary</a>
+      </div>
+      <div class="p-4 rounded-3 mb-5" style="background:var(--ls-navy-800)">
+        <a class="ls-btn me-3" href="#components">Primary on navy</a>
+        <a class="ls-btn ls-btn--on-dark" href="#components">Ghost on navy</a>
+      </div>
+
+      <h3 class="h5 mb-3">Cards</h3>
+      <div class="row g-4 mb-5">
+        <div class="col-md-4">
+          <article class="ls-card ls-service ls-service--2">
+            <div class="ls-service__head"><span class="ls-service__num">02</span><h3>Troubleshooting &amp; RCA</h3></div>
+            <div class="ls-card__body">
+              <span class="ls-service__kicker">Service card</span>
+              <p class="mb-0">Coloured header band, numbered disc, kicker label, body copy and a bullet list.</p>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="ls-card ls-pillar h-100">
+            <div class="ls-card__body">
+              <span class="ls-pillar__num">03</span>
+              <h3>Lean Six Sigma</h3>
+              <p class="ls-pillar__tagline">Reducing variation. Improving quality.</p>
+              <ul class="ls-list"><li>DMAIC project delivery</li><li>SPC &amp; MSA</li><li>7 QC tools</li></ul>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-4">
+          <article class="ls-card h-100">
+            <div class="ls-card__media">
+              <picture><source srcset="assets/img/analytics-dashboard-charts.webp" type="image/webp">
+              <img src="assets/img/analytics-dashboard-charts.jpg" width="900" height="600" loading="lazy" alt="Laptop showing performance charts beside a planning calendar"></picture>
+            </div>
+            <div class="ls-card__body"><h3 class="mb-2">Media card</h3><p class="mb-0" style="color:var(--ls-grey-700)">3:2 media well with a 4.5% hover zoom.</p></div>
+          </article>
+        </div>
+      </div>
+
+      <h3 class="h5 mb-3">Trust bar &amp; process step</h3>
+      <div class="ls-trustbar rounded-4 overflow-hidden mb-5">
+        <div class="ls-trustbar__grid">
+          <div class="ls-trust"><span class="ls-trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="15 7 21 7 21 13"/></svg></span><div><p class="ls-trust__title">Improve performance</p><p>Higher productivity and efficiency</p></div></div>
+          <div class="ls-trust"><span class="ls-trust__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="9" r="6"/><polyline points="8.5 14 7 22 12 19 17 22 15.5 14"/></svg></span><div><p class="ls-trust__title">Enhance quality</p><p>Consistent quality and reliability</p></div></div>
+        </div>
+      </div>
+
+      <ol class="ls-steps list-unstyled mb-5">
+        <li class="ls-step"><span class="ls-step__disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="ls-step__num">1</span></span><h3>Understand</h3><p>We study your operation.</p></li>
+        <li class="ls-step"><span class="ls-step__disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5.9 1.2.9 1.9V16h5.2v-.2c0-.7.3-1.4.9-1.9A6 6 0 0 0 12 3Z"/></svg><span class="ls-step__num">2</span></span><h3>Analyse</h3><p>Detailed assessment.</p></li>
+        <li class="ls-step"><span class="ls-step__disc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span class="ls-step__num">3</span></span><h3>Sustain</h3><p>Continuous monitoring.</p></li>
+      </ol>
+
+      <h3 class="h5 mb-3">Focus state</h3>
+      <p class="mb-3" style="color:var(--ls-grey-700)">Tab through this page: every interactive element takes a 3&nbsp;px <code>--ls-orange-500</code> ring with a 3&nbsp;px offset. Against navy that ring measures 5.1:1 and against white 3.3:1 &mdash; both clear the 3:1 non-text minimum.</p>
+      <a class="ls-btn ls-btn--secondary" href="#components">Focus me with Tab</a>
+    </div>
+  </section>
+
+  <!-- ===== Accessibility & performance ================================== -->
+  <section class="ls-section ls-section--inverse" id="quality">
+    <div class="container ls-container">
+      <span class="ls-eyebrow ls-eyebrow--on-dark">06 &middot; Quality bar</span>
+      <h2 class="ls-rule mb-5">What this foundation guarantees</h2>
+      <div class="row g-4 gy-5">
+        <div class="col-md-6 col-lg-3"><h3 class="h5 mb-2">WCAG 2.1 AA</h3><p class="mb-0" style="color:var(--ls-text-on-inverse-muted)">Every text/background pair in the token set is measured and documented. Skip link, visible focus ring, landmark regions and one H1 per page.</p></div>
+        <div class="col-md-6 col-lg-3"><h3 class="h5 mb-2">Zero third-party</h3><p class="mb-0" style="color:var(--ls-text-on-inverse-muted)">Bootstrap and all webfonts are self-hosted. No CDN, no Google Fonts call, no tracker &mdash; faster LCP and nothing to disclose in a privacy notice.</p></div>
+        <div class="col-md-6 col-lg-3"><h3 class="h5 mb-2">Layout-stable</h3><p class="mb-0" style="color:var(--ls-text-on-inverse-muted)">Every image ships explicit width/height or an <code>aspect-ratio</code> box, so CLS stays at zero while photos stream in.</p></div>
+        <div class="col-md-6 col-lg-3"><h3 class="h5 mb-2">Reduced motion</h3><p class="mb-0" style="color:var(--ls-text-on-inverse-muted)">Reveal animations, smooth scrolling and hover lifts all switch off under <code>prefers-reduced-motion</code>.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ls-footer">
+  <div class="container ls-container">
+    <div class="d-flex flex-wrap gap-3 justify-content-between align-items-center">
+      <p class="mb-0">LALSNIG Consulting &mdash; design system v1.0 &middot; Phase 1</p>
+      <p class="mb-0"><a href="index.html">Back to the site</a></p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/bootstrap/bootstrap.bundle.min.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>

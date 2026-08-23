@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Design-system sign-off page is intentionally out of the index
+Disallow: /brand.html
+
+Sitemap: https://anupammo.github.io/lalsnig-excellence-consultancy/sitemap.xml
