@@ -256,6 +256,9 @@ img { max-width: 100%; height: auto; }
 .ls-section--inverse h2,
 .ls-section--inverse h3,
 .ls-section--inverse h4 { color: var(--ls-white); }
+/* --bs-code-color is navy-600, which is 1.83:1 on a navy ground. */
+.ls-section--inverse code,
+.ls-footer code { color: var(--ls-gold-400); }
 
 /* --------------------------------------------------------------------------
    5. BUTTONS
@@ -439,9 +442,12 @@ img { max-width: 100%; height: auto; }
 .ls-service__head h3 { color: var(--ls-white); margin: 0; font-size: 1.35rem; }
 .ls-service__num {
   flex: none; width: 42px; height: 42px; display: grid; place-items: center;
-  border-radius: 50%; background: rgba(255,255,255,.16);
+  /* Darkening tint, not a lightening one: white 16% over the accent dropped the
+     gold card to 3.83:1 and the steel card to 4.50:1. Black 16% takes the worst
+     case to 6.88:1 and looks the same. */
+  border-radius: 50%; background: rgba(0,0,0,.16);
   font-family: var(--ls-font-display); font-weight: 700; font-size: 1.05rem;
-  border: 1px solid rgba(255,255,255,.35);
+  border: 1px solid rgba(255,255,255,.32);
 }
 .ls-service--1 { --_accent: var(--ls-plum-600); }
 .ls-service--2 { --_accent: var(--ls-steel-600); }
