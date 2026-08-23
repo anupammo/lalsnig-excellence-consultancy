@@ -91,7 +91,7 @@ The status board. Tick boxes here, not in chat.
 
 ### 1F. SEO & technical
 
-- [x] Unique title (66 chars) and meta description (149 chars)
+- [x] Unique title (61 chars) and meta description (148 chars)
 - [x] Canonical, robots directives, `lang="en-IN"`
 - [x] Open Graph + Twitter card with a 1920×1080 image
 - [x] JSON-LD: `Organization`/`ProfessionalService`, `WebSite`, 2× `Person`, `OfferCatalog`, `FAQPage`
@@ -111,8 +111,9 @@ The status board. Tick boxes here, not in chat.
 
 - [x] GitHub Actions workflow with a pre-deploy broken-link check
 - [x] `.nojekyll` so `_`-prefixed paths are never swallowed
-- [ ] 👤 **Enable Pages:** Settings → Pages → Source = "GitHub Actions"
-- [ ] Push to `main` and confirm the first deploy succeeds
+- [x] Pushed to `main` (commit `7fe814c`)
+- [ ] 👤 **Enable Pages:** Settings → Pages → Source → **"Deploy from a branch"**, `main` / `(root)`
+- [ ] ⛔ Actions-based deploy blocked: *"your account is locked due to a billing issue"*. Clear GitHub billing, then switch the Pages source to "GitHub Actions" to re-enable the pre-deploy link check
 
 ### 1H. Documentation
 
@@ -223,7 +224,8 @@ The status board. Tick boxes here, not in chat.
 | 2 | Sign off typography on `brand.html` | Phase 1 gate | 1 |
 | 3 | Confirm all service claims and experience figures are accurate | Phase 1 gate | 1 |
 | 4 | Confirm both trainers consent to publication of name, photo and bio | Phase 1 gate | 1 |
-| 5 | Enable GitHub Pages (Settings → Pages → Source = GitHub Actions) | Going live | 1 |
+| 5 | Enable GitHub Pages (Settings → Pages → Source = **Deploy from a branch**, main/root) | Going live | 1 |
+| 5b | Clear the GitHub Actions billing block, then switch Pages back to "GitHub Actions" | Automated pre-deploy link check | 1 |
 | 6 | Supply vector logo originals | Crisp logo at all sizes | 1/2 |
 | 7 | Confirm a publishable business address | Local SEO, `LocalBusiness` schema | 2 |
 | 8 | Confirm and purchase the custom domain | Root `robots.txt`, brand email | 2 |

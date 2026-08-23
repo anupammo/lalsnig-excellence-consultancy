@@ -154,3 +154,4 @@ A phase closes when **all** of these are true:
 | 6 | No analytics ⇒ no conversion data | Client | Phase 4 consent decision |
 | 7 | No contact form — enquiries rely on `tel:`/`mailto:` | Delivery | Phase 2 form provider |
 | 8 | Lighthouse and Rich Results not yet run against a live URL | Delivery | First deploy |
+| 9 | CI link check cannot run — GitHub Actions is billing-blocked on this account | Client | Clearing GitHub billing; run the checks locally until then |

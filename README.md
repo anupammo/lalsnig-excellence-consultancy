@@ -72,7 +72,12 @@ There is **no build step**. Edit the HTML or CSS, refresh the browser.
 
 Push to `main`. CI validates required files and every local link, then publishes.
 
-**One-time setup, still outstanding:** Settings → Pages → Source → **GitHub Actions**.
+**⛔ Actions is currently blocked on this account** — the first run failed with *"your account is
+locked due to a billing issue"*, before any step executed. Nothing is wrong with the site.
+
+**One-time setup, still outstanding:** Settings → Pages → Source → **"Deploy from a branch"**,
+`main` / `(root)`. That path needs no Actions minutes and publishes this repository unchanged.
+Switch back to "GitHub Actions" once billing is cleared, to get the pre-deploy link check back.
 Full runbook: [`docs/11-deployment-runbook.md`](docs/11-deployment-runbook.md).
 
 ## Licensing

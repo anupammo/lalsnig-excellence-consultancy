@@ -5,18 +5,52 @@
 
 ---
 
+## 0. ⛔ Current blocker — GitHub Actions is disabled on this account
+
+The first deploy (run
+[32645651484](https://github.com/anupammo/lalsnig-excellence-consultancy/actions/runs/32645651484))
+failed before any step executed, with:
+
+> `The job was not started because your account is locked due to a billing issue.`
+
+**Nothing is wrong with the site or the workflow.** The `Validate and package` job never ran; the
+annotation points at `.github`, not at any file we wrote. Until the billing issue on the
+`anupammo` account is resolved, no GitHub Actions workflow in any repository on that account will
+start.
+
+### Use branch deployment instead — it needs no Actions minutes
+
+Classic Pages publishes a branch directly, without the Actions runner. This site is a static tree at
+the repository root with `.nojekyll` already present, so it works unchanged:
+
+1. **Repository → Settings → Pages → Build and deployment → Source → "Deploy from a branch"**
+2. **Branch: `main`, folder: `/ (root)` → Save**
+3. Wait 1–2 minutes, then load
+   https://anupammo.github.io/lalsnig-excellence-consultancy/
+
+Leave [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml) in place. Once
+billing is cleared, switch the source back to "GitHub Actions" and the pre-deploy link check starts
+guarding deploys again. Until then, **run the checks locally before every push** — see
+[§4](#4-local-testing) and [docs/10 §7](10-qa-definition-of-done.md#7-automated-checks).
+
+To resolve the block: GitHub → Settings (account) → Billing and plans → clear the outstanding item,
+or check whether a spending limit is set to zero.
+
+---
+
 ## 1. One-time setup
 
 Do this once, in the GitHub web UI. **Nothing deploys until step 1 is done.**
 
-1. **Repository → Settings → Pages → Build and deployment → Source → "GitHub Actions"**
-   *(not "Deploy from a branch" — the workflow in this repository uses the Actions path and will fail
-   against the branch source.)*
+1. **Repository → Settings → Pages → Build and deployment → Source**
+   - **"Deploy from a branch"** (`main`, `/ (root)`) — **use this today**, see [§0](#0--current-blocker--github-actions-is-disabled-on-this-account)
+   - **"GitHub Actions"** — the intended target, once Actions billing is unblocked
 2. Repository → Settings → Actions → General → Workflow permissions →
-   **Read and write permissions** enabled.
-3. Push to `main`. The workflow runs automatically.
-4. Watch it under the **Actions** tab. First run takes 1–2 minutes.
-5. The live URL appears in Settings → Pages and on the workflow's `deploy` job.
+   **Read and write permissions** enabled *(Actions path only)*.
+3. Push to `main`.
+4. Branch deployment publishes within a couple of minutes. The Actions path shows progress under the
+   **Actions** tab.
+5. The live URL appears in Settings → Pages.
 
 ## 2. How a deploy works
 
@@ -134,13 +168,13 @@ Never `git push --force` to `main`. It rewrites the history the deployment recor
 |---|---|---|
 | Workflow fails at "Check that required entry points exist" | A required file was renamed or deleted | Restore it, or update the list in the workflow |
 | Workflow fails at "Check every local href/src resolves" | Broken asset path — the error names the file and the reference | Fix the path. **Do not disable the check** |
-| Deploy is green but the site is a 404 | Pages source is still "Deploy from a branch" | Settings → Pages → Source → GitHub Actions |
+| Deploy is green but the site is a 404 | Pages source not set, or set to the path you are not using | Settings → Pages → Source: "Deploy from a branch" (main, root) today; "GitHub Actions" once billing is clear |
 | CSS and images 404 on the live site but work locally | Root-absolute paths (`/assets/…`) — wrong under a project path | Use relative paths (`assets/…`), or prefix with `/lalsnig-excellence-consultancy/` as `404.html` does |
 | Fonts do not load | `@font-face` paths are relative to the **CSS file**, not the HTML | `fonts.css` correctly uses `../fonts/…` |
 | A page with a leading `_` is missing | Jekyll processing | `.nojekyll` must exist at the repository root |
 | Old content still showing | Browser or CDN cache | Private window; Pages' CDN clears within minutes |
 | Deploy queued forever | Another deploy in flight | `concurrency` is doing its job — wait |
-| Actions minutes exhausted | Free-tier limit | Public repositories get unlimited Actions minutes; check the repository is still public |
+| `The job was not started because your account is locked due to a billing issue` | Account-level Actions block, not a repository or code problem | Clear the billing item, or switch Pages to branch deployment — see [§0](#0--current-blocker--github-actions-is-disabled-on-this-account) |
 
 ## 8. Platform limits
 

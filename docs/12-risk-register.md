@@ -22,17 +22,20 @@ Reviewed at every phase gate. Scoring: Likelihood × Impact, each 1–5.
 | **R16** | **Content published but not distributed.** Articles ship and nobody sees them | 3 | 3 | **9** | **Mitigate.** LinkedIn syndication is part of the article's definition of done, not an afterthought. The client's existing network is the strongest distribution channel available and it is free |
 | **R17** | **Trainer consent for name, photo and biography was assumed, not obtained** | 2 | 4 | **8** | **Prevent.** Explicit confirmation is a Phase 1 gate item ([03](03-progress-checklist.md#open-items-needing-the-client-)). Do not go live without it |
 | **R18** | **Scope creep from the Web Design & Development capability** — the site drifts into positioning itself as a web agency and dilutes its conveyor identity | 2 | 3 | **6** | **Prevent.** Deliberate IA decision: it stays a listed capability on the home page and gets no page of its own. Revisit only if it becomes a real revenue line ([05 §2](05-information-architecture.md#2-phase-2-target-sitemap)) |
+| **R19** | **GitHub Actions is billing-blocked on the hosting account.** The first deploy never started: *"your account is locked due to a billing issue"*. The CI link check that guards every deploy cannot run | 5 | 3 | **15** | **Mitigate now, fix later.** Switch Pages to branch deployment — no Actions minutes, publishes this repository unchanged. Run the link and overflow checks locally before every push until billing is cleared, then switch the source back to "GitHub Actions". See [11 §0](11-deployment-runbook.md#0--current-blocker--github-actions-is-disabled-on-this-account) |
 
 ---
 
-## Top five, by score
+## Top risks, by score
 
 1. **R1** — address blocks local SEO (16)
 2. **R2** — SME capacity bottlenecks content (16)
 3. **R5** — no case studies (16)
-4. **R3** — raster-only logo (12) · **R4** — stock photography (12) · **R13** — late design churn (12) · **R15** — no analytics (12)
+4. **R19** — Actions billing block removes the deploy safety net (15)
+5. **R3** — raster-only logo (12) · **R4** — stock photography (12) · **R13** — late design churn (12) · **R15** — no analytics (12)
 
-Four of the top seven are unblocked by a single conversation with the client. That conversation is the
+Five of these are unblocked by a single conversation with the client — the address, the case-study
+permission, the vector logo, the photography, and the GitHub billing. That conversation is the
 highest-value action available on this project right now, and it costs nothing.
 
 ---
@@ -42,3 +45,4 @@ highest-value action available on this project right now, and it costs nothing.
 | Date | Reviewer | Changes |
 |---|---|---|
 | 2026-08-23 | Delivery | Register created at Phase 1 close |
+| 2026-08-23 | Delivery | R19 added after the first deploy attempt was refused for account billing |
