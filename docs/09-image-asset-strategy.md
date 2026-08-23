@@ -110,27 +110,68 @@ Length: under ~125 characters. If it needs more, the information belongs in a ca
 
 ## 4. Optimisation pipeline
 
-Every source image passes through the same four steps. The Phase 1 set was processed with a Node
-script using `@napi-rs/canvas`; any equivalent tool (Squoosh, sharp, ImageMagick) is fine as long as
+Every source image passes through the same five steps. The Phase 1 set was processed with Node
+scripts using `@napi-rs/canvas`; any equivalent tool (Squoosh, sharp, ImageMagick) is fine as long as
 the outputs match.
 
 1. **Crop to the placement's aspect ratio** — 16:9 hero, 21:9 band, 4:3 industry tiles, 3:2 cards.
    Cropping at build time, not with CSS `object-fit` on an oversized file, is what keeps the bytes
    down.
-2. **Resize to the largest rendered size**, not the source size. 1920 px wide is the maximum here;
-   nothing needs more.
-3. **Encode twice** — WebP q80 (served) and JPEG q78 (fallback).
-4. **Serve via `<picture>`** with explicit `width`/`height`, `loading="lazy"` below the fold, and
-   `fetchpriority="high"` with no `loading` attribute on the LCP image.
+2. **Generate one variant per real rendered width** (see the table below), not one file for all
+   viewports.
+3. **Encode twice per width** — WebP (served) and JPEG/PNG (fallback).
+4. **Choose quality by how the image is actually seen** (see "Scrim-aware compression").
+5. **Serve via `<picture>` with `srcset` and an honest `sizes`**, explicit `width`/`height`,
+   `loading="lazy"` below the fold, and `fetchpriority="high"` with no `loading` attribute on the LCP
+   image.
 
 ```html
 <picture>
-  <source srcset="assets/img/industry-cement.webp" type="image/webp">
-  <img src="assets/img/industry-cement.jpg" width="800" height="600"
-       loading="lazy" decoding="async"
+  <source type="image/webp" sizes="(min-width: 992px) 370px, calc(50vw - 18px)"
+          srcset="assets/img/industry-cement-400.webp 400w,
+                  assets/img/industry-cement.webp     800w">
+  <img src="assets/img/industry-cement.jpg"
+       sizes="(min-width: 992px) 370px, calc(50vw - 18px)"
+       srcset="assets/img/industry-cement-400.jpg 400w,
+               assets/img/industry-cement.jpg     800w"
+       width="800" height="600" loading="lazy" decoding="async"
        alt="Cement plant with silos, inclined conveyors and material stockpiles at sunset">
 </picture>
 ```
+
+> **`sizes` must be truthful.** It tells the browser how wide the image will render *before* layout
+> exists, and the browser trusts it completely. A wrong `sizes` is worse than none — it silently picks
+> the wrong candidate on every device.
+
+### Variant ladder
+
+| Class | Widths shipped | Rendered at | Quality |
+|---|---|---|---|
+| Hero (16:9) | 640 · 960 · 1440 · 1920 | 100vw | WebP q58 / JPEG q62 |
+| Expertise band (21:9) | 960 · 1440 · 1920 | 100vw at 16% opacity | WebP q42 / JPEG q48 |
+| Content card (3:2) | 480 · 720 · 900 | ≤ 570 px | q74 |
+| Industry tile (4:3) | 400 · 800 | 190–370 px | q74 |
+| Trainer portrait (1:1) | 224 · 512 | 112 px | q80 |
+| Horizontal logo | 260 · 440 (PNG + WebP) | 125–190 px | q88 |
+| Hero chip logo | 260 · 420 (PNG + WebP) | 133–169 px | q88 |
+
+The un-suffixed file (`industry-cement.webp`) is the largest rung of the ladder *and* the
+regeneration source. Full-size originals with no rung — `hero-conveyor-coal.jpg`,
+`logo-horizontal.png` — stay in the repository as sources and are no longer requested by any page.
+`scripts/check-links.mjs` lists them so nobody deletes them by accident.
+
+### Scrim-aware compression
+
+**Compress for how the image is seen, not for how it looks alone.** The hero sits under a navy scrim
+running 0.48–0.97 alpha; the expertise band renders at 16% opacity. Neither is ever displayed at full
+fidelity, so quality settings that would be unacceptable on a product photo are invisible here:
+
+| Image | q80 (naive) | Scrim-aware | Visible difference |
+|---|---|---|---|
+| `hero-conveyor-coal-960.webp` | 66 KB | **40 KB** at q58 | none |
+| `band-conveyor-aerial-1440.webp` | 120 KB | **62 KB** at q42 | none |
+
+Verified by screenshotting the rendered page before and after, not by inspecting the files.
 
 ### Budget
 
@@ -143,6 +184,20 @@ the outputs match.
 
 Everything currently shipped is inside budget. Anything that is not gets re-encoded or re-cropped, not
 waved through.
+
+### What this was worth
+
+Measured on the live URL at a 412 px viewport:
+
+| | Before | After |
+|---|---|---|
+| Total page weight | 697 KB | **~330 KB** |
+| Images | 467 KB | **157 KB** |
+| Largest Contentful Paint | 4.2 s | **2.2–2.6 s** |
+
+The single worst offender was the header logo: a 142 KB PNG rendered at 219×63, now 17 KB. **Check
+the rendered size against the file size before assuming an image is fine** — it was the smallest
+thing on the page and the most wasteful.
 
 ---
 

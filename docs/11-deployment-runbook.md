@@ -1,40 +1,50 @@
 # 11 — Deployment runbook
 
-**Host:** GitHub Pages · **Pipeline:** GitHub Actions ·
+**Host:** GitHub Pages · **Pipeline:** branch deployment (Actions workflow ready but billing-blocked) ·
 **Live URL:** https://anupammo.github.io/lalsnig-excellence-consultancy/
 
 ---
 
-## 0. ⛔ Current blocker — GitHub Actions is disabled on this account
+## 0. Current deployment mode — branch, not Actions
 
-The first deploy (run
+**The site is live** at https://anupammo.github.io/lalsnig-excellence-consultancy/, published by
+**classic branch deployment** (`main` / `/ (root)`), not by the Actions workflow.
+
+### Why
+
+The first Actions deploy (run
 [32645651484](https://github.com/anupammo/lalsnig-excellence-consultancy/actions/runs/32645651484))
-failed before any step executed, with:
+failed before any step executed:
 
 > `The job was not started because your account is locked due to a billing issue.`
 
-**Nothing is wrong with the site or the workflow.** The `Validate and package` job never ran; the
-annotation points at `.github`, not at any file we wrote. Until the billing issue on the
-`anupammo` account is resolved, no GitHub Actions workflow in any repository on that account will
-start.
+Nothing was wrong with the site or the workflow — the `Validate and package` job never ran, and the
+annotation pointed at `.github`, not at any file we wrote. Branch deployment needs no Actions minutes
+and publishes this repository unchanged, because the site is a static tree at the repository root
+with `.nojekyll` already present.
 
-### Use branch deployment instead — it needs no Actions minutes
+### What this costs us, and what to do about it
 
-Classic Pages publishes a branch directly, without the Actions runner. This site is a static tree at
-the repository root with `.nojekyll` already present, so it works unchanged:
+The pre-deploy validation gate does not run. **Until Actions is restored, run it yourself before
+every push:**
 
-1. **Repository → Settings → Pages → Build and deployment → Source → "Deploy from a branch"**
-2. **Branch: `main`, folder: `/ (root)` → Save**
-3. Wait 1–2 minutes, then load
-   https://anupammo.github.io/lalsnig-excellence-consultancy/
+```bash
+node scripts/check-links.mjs
+```
 
-Leave [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml) in place. Once
-billing is cleared, switch the source back to "GitHub Actions" and the pre-deploy link check starts
-guarding deploys again. Until then, **run the checks locally before every push** — see
-[§4](#4-local-testing) and [docs/10 §7](10-qa-definition-of-done.md#7-automated-checks).
+That is the identical script CI invokes, so passing locally means passing in CI. It checks required
+files, every local reference (multi-line `srcset` included), one `<h1>` per page, heading-level skips,
+canonical on indexable pages, `img` alt + width/height, and JSON-LD parseability.
 
-To resolve the block: GitHub → Settings (account) → Billing and plans → clear the outstanding item,
-or check whether a spending limit is set to zero.
+### Restoring the Actions path
+
+1. GitHub → Settings (account) → Billing and plans → clear the outstanding item, or check whether a
+   spending limit is set to zero.
+2. Repository → Settings → Pages → Source → **"GitHub Actions"**.
+3. Push, and confirm the workflow goes green.
+
+Leave [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml) in place
+meanwhile — it is ready and correct.
 
 ---
 
@@ -43,7 +53,7 @@ or check whether a spending limit is set to zero.
 Do this once, in the GitHub web UI. **Nothing deploys until step 1 is done.**
 
 1. **Repository → Settings → Pages → Build and deployment → Source**
-   - **"Deploy from a branch"** (`main`, `/ (root)`) — **use this today**, see [§0](#0--current-blocker--github-actions-is-disabled-on-this-account)
+   - ✅ **"Deploy from a branch"** (`main`, `/ (root)`) — **current mode**, see [§0](#0-current-deployment-mode--branch-not-actions)
    - **"GitHub Actions"** — the intended target, once Actions billing is unblocked
 2. Repository → Settings → Actions → General → Workflow permissions →
    **Read and write permissions** enabled *(Actions path only)*.
@@ -51,6 +61,9 @@ Do this once, in the GitHub web UI. **Nothing deploys until step 1 is done.**
 4. Branch deployment publishes within a couple of minutes. The Actions path shows progress under the
    **Actions** tab.
 5. The live URL appears in Settings → Pages.
+
+> Observed publish latency on branch deployment: **30–90 seconds** from push to the new bytes being
+> served. There is no build log — the only way to confirm is to fetch the changed file.
 
 ## 2. How a deploy works
 
@@ -85,8 +98,9 @@ Defined in [`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pa
 [ ] Tested locally (see §4)
 [ ] No secrets, credentials or client-confidential files in the diff
 [ ] Commit message says what changed and why
+[ ] node scripts/check-links.mjs passes
 [ ] Push to main
-[ ] Actions tab: workflow green
+[ ] Confirm the change is served (curl the changed file; branch deploys have no build log)
 [ ] Load the live URL in a private window (bypasses cache)
 [ ] Hard-refresh and confirm CSS, fonts, images all load
 [ ] Lighthouse against the live URL
@@ -148,10 +162,12 @@ Attaching a domain is what unblocks a working `robots.txt`, a brand email addres
 
 ## 6. Rollback
 
-Pages serves the last successful deploy, so a red workflow leaves the previous version live — a
-failed build is not an outage.
+> **Under branch deployment there is no gate.** Whatever you push to `main` goes live, broken or not.
+> On the Actions path a failed validation leaves the previous version serving, so a bad build is not
+> an outage. That safety net is currently absent — which is why `node scripts/check-links.mjs` before
+> pushing is not optional right now.
 
-**To roll back a bad deploy that succeeded:**
+**To roll back a bad deploy:**
 
 ```bash
 git revert <bad-commit-sha>     # preserves history; preferred
@@ -168,13 +184,13 @@ Never `git push --force` to `main`. It rewrites the history the deployment recor
 |---|---|---|
 | Workflow fails at "Check that required entry points exist" | A required file was renamed or deleted | Restore it, or update the list in the workflow |
 | Workflow fails at "Check every local href/src resolves" | Broken asset path — the error names the file and the reference | Fix the path. **Do not disable the check** |
-| Deploy is green but the site is a 404 | Pages source not set, or set to the path you are not using | Settings → Pages → Source: "Deploy from a branch" (main, root) today; "GitHub Actions" once billing is clear |
+| Site is a 404 | Pages source not set, or set to the path you are not using | Settings → Pages → Source: "Deploy from a branch" (main, root) today; "GitHub Actions" once billing is clear |
 | CSS and images 404 on the live site but work locally | Root-absolute paths (`/assets/…`) — wrong under a project path | Use relative paths (`assets/…`), or prefix with `/lalsnig-excellence-consultancy/` as `404.html` does |
 | Fonts do not load | `@font-face` paths are relative to the **CSS file**, not the HTML | `fonts.css` correctly uses `../fonts/…` |
 | A page with a leading `_` is missing | Jekyll processing | `.nojekyll` must exist at the repository root |
 | Old content still showing | Browser or CDN cache | Private window; Pages' CDN clears within minutes |
 | Deploy queued forever | Another deploy in flight | `concurrency` is doing its job — wait |
-| `The job was not started because your account is locked due to a billing issue` | Account-level Actions block, not a repository or code problem | Clear the billing item, or switch Pages to branch deployment — see [§0](#0--current-blocker--github-actions-is-disabled-on-this-account) |
+| `The job was not started because your account is locked due to a billing issue` | Account-level Actions block, not a repository or code problem | Clear the billing item; meanwhile branch deployment is serving the site — see [§0](#0-current-deployment-mode--branch-not-actions) |
 
 ## 8. Platform limits
 

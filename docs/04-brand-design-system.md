@@ -1,6 +1,6 @@
 # 04 — Brand & design system
 
-**Version 1.0 · 23 August 2026 · awaiting client sign-off**
+**Version 1.1 · 24 August 2026 · awaiting client sign-off**
 
 Live, interactive version: **[`brand.html`](../brand.html)** — that page is rendered from the same
 production CSS the site uses, so what you approve there is literally what ships.
@@ -111,6 +111,32 @@ Components reference these, never raw ramps. Re-theming the site is a matter of 
 --ls-border / --ls-border-strong
 --ls-accent / --ls-accent-cta / --ls-accent-cta-hover / --ls-focus
 ```
+
+### 2.5b Tinting a brand colour — darken, never lighten
+
+The numbered chips on the service cards originally used `rgba(255,255,255,.16)` over the card's
+accent. Lightening the background under white text destroys contrast: it took the gold card to
+**3.83:1** (a fail) and the steel card to **4.50:1** (a hair over the line). `rgba(0,0,0,.16)`
+darkens instead, taking the worst case to **6.88:1**, and looks the same.
+
+| Accent | White 16% tint | Black 16% tint |
+|---|---|---|
+| `--ls-gold-700` | 3.83 ✗ | **6.88** ✓ |
+| `--ls-steel-600` | 4.50 ~ | **8.14** ✓ |
+| `--ls-plum-600` | 5.05 | **9.40** |
+| `--ls-clay-600` | 4.99 | **9.02** |
+| `--ls-teal-600` | 5.17 | **9.57** |
+| `--ls-navy-700` | 7.43 | **13.71** |
+
+**Rule: when overlaying a chip or badge on a brand accent that carries white text, tint with black,
+not white.** Both were found by running axe against the deployed page, not by eye — a 4.50 and a
+3.83 look completely fine.
+
+### 2.5c Inline `<code>` on dark sections
+
+Bootstrap's `--bs-code-color` is repointed to `--ls-navy-600`, which reads well on white and is
+**1.83:1** on a navy ground. `.ls-section--inverse code` and `.ls-footer code` therefore switch to
+`--ls-gold-400` (7.86:1).
 
 ### 2.6 Colour proportion
 
@@ -301,3 +327,7 @@ is disabled, and all transitions and animations collapse to 0.001 ms.
 4. **Horizontal row gutters never exceed `g-4`.** See §4.
 5. **Add the component to `brand.html`** in the same commit. A component that is not on the style
    guide will be reinvented by the next person.
+6. **Tint chips and badges with black, never white** — see [§2.5b](#25b-tinting-a-brand-colour--darken-never-lighten).
+7. **Run `node scripts/check-links.mjs` before pushing.** It catches heading skips, missing `alt`,
+   images without dimensions and broken references — all of which are design-system failures as
+   much as code ones.

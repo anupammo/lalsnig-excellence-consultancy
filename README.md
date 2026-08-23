@@ -10,7 +10,10 @@ Static site: **HTML5 + Bootstrap 5.3.3 + vanilla JS**, deployed to GitHub Pages 
 
 ## Status
 
-**Phase 1 — brand foundation & digital presence — delivered 23 August 2026, awaiting client sign-off.**
+**Phase 1 — brand foundation & digital presence — live since 24 August 2026, awaiting client sign-off.**
+
+Lighthouse on the deployed URL: mobile **86–98 (median 96) / 100 / 100 / 100**, desktop
+**99 / 100 / 100 / 100**. Structured data validates with **0 errors, 0 warnings**. CLS is **0**.
 
 Full status board: [`docs/03-progress-checklist.md`](docs/03-progress-checklist.md)
 
@@ -37,8 +40,9 @@ assets/
   img/                          Photography (WebP + JPEG), logo set, icons
   vendor/bootstrap/             Bootstrap 5.3.3, vendored
 
+scripts/check-links.mjs         Validation gate - run before every push; CI runs the same script
 docs/                           Project management documentation (12 files)
-.github/workflows/              CI: validate, then deploy to Pages
+.github/workflows/              CI: validate, then deploy to Pages (blocked, see Deployment)
 ```
 
 ## Local development
@@ -65,19 +69,27 @@ There is **no build step**. Edit the HTML or CSS, refresh the browser.
 3. **Measure contrast before adding a colour pairing** —
    [script](docs/10-qa-definition-of-done.md#contrast-measurement).
 4. **Add new components to `brand.html`** in the same commit, or they will be reinvented.
-5. **Pass the Definition of Done before pushing** —
+5. **Tint chips and badges with black, never white.** Lightening a brand accent under white text
+   destroys contrast — it put two live elements below AA.
+6. **Every image ships slot-sized variants** with `srcset`/`sizes`. Regenerate with the scripts
+   described in [`docs/09 §4`](docs/09-image-asset-strategy.md#4-optimisation-pipeline).
+7. **Pass the Definition of Done before pushing** —
    [`docs/10`](docs/10-qa-definition-of-done.md).
 
 ## Deployment
 
-Push to `main`. CI validates required files and every local link, then publishes.
+The site publishes by **branch deployment** (`main` / `/ (root)`), live 30–90 seconds after a push.
 
-**⛔ Actions is currently blocked on this account** — the first run failed with *"your account is
-locked due to a billing issue"*, before any step executed. Nothing is wrong with the site.
+```bash
+node scripts/check-links.mjs    # run this BEFORE every push
+git push origin main
+```
 
-**One-time setup, still outstanding:** Settings → Pages → Source → **"Deploy from a branch"**,
-`main` / `(root)`. That path needs no Actions minutes and publishes this repository unchanged.
-Switch back to "GitHub Actions" once billing is cleared, to get the pre-deploy link check back.
+**⛔ GitHub Actions is billing-blocked on this account**, so the workflow that would validate the
+site before publishing never starts. Branch deployment has no gate: whatever you push goes live,
+broken or not. `scripts/check-links.mjs` is the identical check CI runs — running it locally is
+currently the only thing standing between a typo and production. Clear the billing item, switch
+Settings → Pages → Source to **"GitHub Actions"**, and it becomes automatic again.
 Full runbook: [`docs/11-deployment-runbook.md`](docs/11-deployment-runbook.md).
 
 ## Licensing

@@ -89,8 +89,49 @@ pairing gets measured with it before it ships.
 | Webfont payload | ≤ 350 KB | Currently 308 KB |
 | Render-blocking resources | CSS only | Network panel |
 
-- [ ] All budgets met on **the deployed URL**, not on `file://`
+- [x] All budgets met on **the deployed URL**, not on `file://`
 - [ ] Tested on a throttled connection (Slow 4G) at least once
+
+### Measured — 24 August 2026, live URL
+
+Lighthouse 12, headless Chrome, mobile preset (4× CPU throttle, simulated slow 4G).
+
+| | Mobile | Desktop |
+|---|---|---|
+| **Performance** | **86 – 98** across 7 runs, median **96** | **99** |
+| **Accessibility** | **100** | 100 |
+| **Best Practices** | **100** | 100 |
+| **SEO** | **100** | 100 |
+| FCP | 1.3 – 1.6 s | 0.5 s |
+| LCP | 2.2 – 2.6 s | 0.7 s |
+| CLS | **0** (every run) | 0 |
+| TBT | 30 – 410 ms | 0 ms |
+| Page weight | ~330 KB | — |
+| Third-party requests | **0** | 0 |
+
+> **On that Performance spread.** The 86–98 range is entirely Total Blocking Time, which varies with
+> CPU contention on the measuring machine — the two low runs happened while other work was running on
+> the same laptop. LCP, CLS, FCP and page weight were stable across all seven runs. Do not quote "98"
+> as the score; quote the median and the range, and replace both with Search Console field data once
+> Phase 4 lands. Lab numbers describe the machine as much as the site.
+
+**What moved the numbers** (first measurement was Performance 84, LCP 4.2 s):
+
+| Fix | Effect |
+|---|---|
+| `site.js` read `window.scrollY` inside a scroll listener, forcing synchronous layout every frame | 316 ms of forced reflow removed; TBT 320 → ~50 ms |
+| Header logo was a 142 KB PNG rendered at 219×63 | 142 → 17 KB |
+| Hero shipped at 1920 px to a 412 px viewport | responsive `srcset`; 167 → 40 KB on mobile |
+| Hero and band re-encoded at q58/q42 (both sit under a scrim, so it is invisible) | a further ~40% off both |
+| Below-the-fold cards, tiles and portraits sized to their slots | ~200 KB |
+
+**Structured data — validated 24 August 2026** at `validator.schema.org` against the live URL:
+**0 errors, 0 warnings.** Graph extracted intact — `Organization` + `ProfessionalService` (with
+`ContactPoint`, `Country`, 2 × `Person`, `OfferCatalog` → 6 × `Offer` → `Service`), `WebSite`,
+and `FAQPage` → 6 × `Question` → `Answer`.
+
+`brand.html` scores SEO 66. That is the `noindex` penalty and is correct — the page is a sign-off
+artefact and must stay out of the index.
 
 ## 5. SEO
 
@@ -115,14 +156,33 @@ Run the per-page checklist in [07 §8](07-seo-onpage-spec.md#8-per-page-pre-publ
 
 ## 7. Automated checks
 
-`.github/workflows/deploy-pages.yml` runs on every push to `main` and blocks the deploy on failure:
+```bash
+node scripts/check-links.mjs
+```
+
+One script, run both by you and by CI, so local and CI cannot disagree about what "passing" means.
+**While Actions is billing-blocked and the site publishes by branch deployment, this is the only gate
+there is — run it before every push.** See [11 §0](11-deployment-runbook.md#0-current-deployment-mode--branch-not-actions).
+
+It checks:
 
 1. **Required files present** — `index.html`, `404.html`, `robots.txt`, `sitemap.xml`,
-   `site.webmanifest`, the CSS, the JS, the Bootstrap bundle.
-2. **Local reference integrity** — every `href`/`src`/`srcset` on `index.html`, `brand.html` and
-   `404.html` that is not `http(s):`, `mailto:`, `tel:`, `data:` or protocol-relative must resolve to
-   a real file. Root-absolute paths under `/lalsnig-excellence-consultancy/` are normalised first;
-   pure fragments are skipped.
+   `site.webmanifest`, `.nojekyll`, the CSS, the JS, the Bootstrap bundle.
+2. **Local reference integrity** — every `href` / `src` / `srcset` / `imagesrcset` that is not
+   `http(s):`, `mailto:`, `tel:`, `data:` or protocol-relative must resolve to a real file. `srcset`
+   candidate lists are split and their `640w` descriptors stripped; root-absolute paths under
+   `/lalsnig-excellence-consultancy/` are normalised; bare fragments are skipped. It also follows
+   `site.webmanifest` and `url()` in the CSS, so the app icons and webfonts count as referenced.
+3. **Exactly one `<h1>` per page** and **no heading-level skips**.
+4. **Canonical** on every indexable page (`noindex` pages are exempt).
+5. **Every `<img>`** carries `alt` and both `width` and `height`.
+6. **Every JSON-LD block parses.**
+7. Informational: lists files in `assets/img` that no page references — regeneration sources and the
+   Phase 2 library live there too, so this is a report, never a failure.
+
+> The original version of this check was a `grep`/`sed` pipeline. It was line-based, so it silently
+> stopped matching the moment `srcset` attributes spanned multiple lines — it would have reported
+> success while checking nothing. That is why it is a script now.
 
 ### Worth adding in Phase 2
 
@@ -153,5 +213,9 @@ A phase closes when **all** of these are true:
 | 5 | No business address ⇒ no `LocalBusiness` schema, no Google Business Profile | Client | Confirmed address |
 | 6 | No analytics ⇒ no conversion data | Client | Phase 4 consent decision |
 | 7 | No contact form — enquiries rely on `tel:`/`mailto:` | Delivery | Phase 2 form provider |
-| 8 | Lighthouse and Rich Results not yet run against a live URL | Delivery | First deploy |
-| 9 | CI link check cannot run — GitHub Actions is billing-blocked on this account | Client | Clearing GitHub billing; run the checks locally until then |
+| ~~8~~ | ~~Lighthouse and Rich Results not run against a live URL~~ | — | ✅ **Cleared 24 Aug 2026** — see §4 |
+| 9 | No pre-deploy gate: Actions is billing-blocked, so branch deployment publishes whatever is pushed | Client | Clearing GitHub billing. Until then `node scripts/check-links.mjs` before every push |
+| 10 | Bootstrap CSS is 94% unused (~30 KB of the 32 KB transferred, ~300 ms render-blocking) | Delivery | A custom Bootstrap build in Phase 2, when the full class inventory is known. Purging now would risk silently dropping classes the Phase 2 pages need |
+| 11 | `assets/css/brand.css` ships unminified (~2 KB of savings) | Delivery | Deliberate: a build step costs more in maintainability than 2 KB buys in speed |
+| 12 | GitHub Pages sets `cache-control: max-age=600`; longer asset caching is not configurable | Platform | Only a move off Pages would change this |
+| 13 | Cormorant Garamond costs ~48 KB for a pull-quote and one label | Delivery | Accepted — it is a signed-off brand decision, recorded here so it is a choice and not an oversight |

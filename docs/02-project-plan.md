@@ -13,7 +13,7 @@ Effort is given in **working days of delivery time**, excluding client review tu
 ```
 Phase 0  Discovery ─────────┐
                             ▼
-Phase 1  Brand foundation & digital presence  ◄── YOU ARE HERE (delivered, awaiting sign-off)
+Phase 1  Brand foundation & digital presence  ◄── LIVE, awaiting client sign-off
                             │
                             ▼
 Phase 2  Content & multi-page expansion
@@ -51,7 +51,7 @@ site traces back to a line in it.
 
 ## Phase 1 — Brand foundation & digital presence
 
-**Status:** ✅ Delivered (23 Aug 2026), awaiting client sign-off · **Effort:** 4 days
+**Status:** ✅ **Live** (24 Aug 2026), awaiting client sign-off · **Effort:** 5 days
 
 The phase the client asked for first: lock the colour scheme, typography and design language, and put
 a real, credible presence on the public web so brand decisions are made against something live rather
@@ -72,7 +72,8 @@ than against a mock-up.
 | 1.9 | On-page SEO base: title, description, canonical, OG/Twitter, `sitemap.xml`, `robots.txt`, manifest | root files + `<head>` |
 | 1.10 | Structured data: `Organization` + `ProfessionalService`, `WebSite`, two `Person`, `OfferCatalog` (6 services), `FAQPage` (6 Q&As) | `index.html` JSON-LD |
 | 1.11 | Optimised, self-hosted, licensed imagery — WebP + JPEG, explicit dimensions, lazy below the fold | `assets/img/` |
-| 1.12 | CI deployment to GitHub Pages with a pre-deploy link check | `.github/workflows/deploy-pages.yml` |
+| 1.12 | Deployment to GitHub Pages + a validation gate run by both CI and the developer | `.github/workflows/deploy-pages.yml`, `scripts/check-links.mjs` |
+| 1.14 | Performance pass on the live URL: responsive images, scrim-aware compression, forced-reflow fix | mobile 86–98 (median 96) / 100 / 100 / 100, CLS 0 |
 | 1.13 | This documentation set | `docs/` |
 
 ### Deliberate technical decisions
@@ -91,8 +92,9 @@ than against a mock-up.
 - [ ] Client signs off typography on `brand.html`
 - [ ] Client confirms every service description and claim on `index.html` is accurate
 - [ ] Client confirms both trainers consent to their photograph and biography being published
-- [ ] Site is live on GitHub Pages and reachable
-- [ ] Definition of Done gate passed ([10](10-qa-definition-of-done.md))
+- [x] Site is live on GitHub Pages and reachable
+- [x] Definition of Done gate passed ([10](10-qa-definition-of-done.md)) — Lighthouse and structured data measured on the live URL
+- [ ] Site verified in Google Search Console and `sitemap.xml` submitted
 
 ---
 

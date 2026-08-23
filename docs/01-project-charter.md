@@ -4,7 +4,7 @@
 **Sponsor:** Mr. Ranjit Mondal (owner, LALSNIG Consulting)
 **Delivery:** Anupam Mondal
 **Charter date:** 23 August 2026
-**Status:** Active — Phase 1 delivered
+**Status:** Active — Phase 1 live, awaiting sign-off
 
 ---
 
@@ -106,7 +106,7 @@ delivery decision.
 | Phase | Focus | Status |
 |---|---|---|
 | 0 | Discovery & foundation inputs | ✅ Complete — 23 Aug 2026 |
-| 1 | Brand foundation & digital presence (GitHub Pages) | ✅ Delivered — 23 Aug 2026, awaiting sign-off |
+| 1 | Brand foundation & digital presence (GitHub Pages) | ✅ Live — 24 Aug 2026, awaiting sign-off |
 | 2 | Content & multi-page expansion | ⏳ Next |
 | 3 | Authority content & organic growth | Planned |
 | 4 | Conversion & analytics | Planned |

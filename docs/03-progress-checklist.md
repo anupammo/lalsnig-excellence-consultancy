@@ -4,7 +4,7 @@ The status board. Tick boxes here, not in chat.
 
 **Legend:** `[x]` done · `[ ]` open · **⛔** blocked (blocker named) · **👤** needs the client
 
-**Last updated:** 23 August 2026
+**Last updated:** 24 August 2026
 
 ---
 
@@ -13,7 +13,7 @@ The status board. Tick boxes here, not in chat.
 | Phase | Items | Done | Open | Blocked |
 |---|---|---|---|---|
 | 0 — Discovery | 8 | 8 | 0 | 0 |
-| 1 — Brand foundation & digital presence | 48 | 42 | 6 | 0 |
+| 1 — Brand foundation & digital presence | 52 | 48 | 4 | 0 |
 | 2 — Content & multi-page expansion | 30 | 0 | 26 | 4 |
 | 3 — Authority content | 16 | 0 | 16 | 0 |
 | 4 — Conversion & analytics | 13 | 0 | 12 | 1 |
@@ -104,16 +104,20 @@ The status board. Tick boxes here, not in chat.
 - [x] Below-the-fold images lazy-loaded; hero uses `fetchpriority="high"`
 - [x] WebP with JPEG fallback via `<picture>`
 - [x] Horizontal-overflow audit at 360/430/768/1024/1280/1600 px — **fixed**: `g-5` row gutters exceeded container padding and overflowed the viewport by 12 px
-- [ ] Validate JSON-LD in Google's Rich Results Test *(needs the live URL)*
-- [ ] Run Lighthouse against the deployed URL and record the four scores
+- [x] Validate the structured data against the live URL — **0 errors, 0 warnings** at `validator.schema.org`, full graph extracted
+- [x] Run Lighthouse against the deployed URL — mobile **86–98 (median 96) / 100 / 100 / 100**, desktop **99 / 100 / 100 / 100**; see [10 §4](10-qa-definition-of-done.md#measured--24-august-2026-live-url)
+- [x] Cut mobile page weight 697 KB → ~330 KB and LCP 4.2 s → 2.4 s (responsive images, scrim-aware compression, forced-reflow fix)
+- [x] Fix two contrast failures axe found on the live pages (numbered service chips, `<code>` on navy)
 
 ### 1G. Deployment
 
 - [x] GitHub Actions workflow with a pre-deploy broken-link check
 - [x] `.nojekyll` so `_`-prefixed paths are never swallowed
-- [x] Pushed to `main` (commit `7fe814c`)
-- [ ] 👤 **Enable Pages:** Settings → Pages → Source → **"Deploy from a branch"**, `main` / `(root)`
-- [ ] ⛔ Actions-based deploy blocked: *"your account is locked due to a billing issue"*. Clear GitHub billing, then switch the Pages source to "GitHub Actions" to re-enable the pre-deploy link check
+- [x] Pushed to `main`
+- [x] ✅ **Pages enabled and the site is live** — https://anupammo.github.io/lalsnig-excellence-consultancy/ (branch deployment, `main` / `(root)`)
+- [x] Every asset, both extra pages and the custom 404 verified over HTTPS
+- [x] `scripts/check-links.mjs` — one validation script run by both CI and you locally
+- [ ] ⛔ Actions-based deploy still blocked: *"your account is locked due to a billing issue"*. Clear GitHub billing, then switch the Pages source to "GitHub Actions" to restore the pre-deploy gate
 
 ### 1H. Documentation
 
@@ -224,8 +228,9 @@ The status board. Tick boxes here, not in chat.
 | 2 | Sign off typography on `brand.html` | Phase 1 gate | 1 |
 | 3 | Confirm all service claims and experience figures are accurate | Phase 1 gate | 1 |
 | 4 | Confirm both trainers consent to publication of name, photo and bio | Phase 1 gate | 1 |
-| 5 | Enable GitHub Pages (Settings → Pages → Source = **Deploy from a branch**, main/root) | Going live | 1 |
-| 5b | Clear the GitHub Actions billing block, then switch Pages back to "GitHub Actions" | Automated pre-deploy link check | 1 |
+| ~~5~~ | ~~Enable GitHub Pages~~ | ✅ **done — site is live** | 1 |
+| 5b | Clear the GitHub Actions billing block, then switch Pages back to "GitHub Actions" | The pre-deploy gate. Branch deployment publishes whatever is pushed, broken or not | 1 |
+| 12 | Verify the site in **Google Search Console** and submit `sitemap.xml` | All organic measurement, and the only accurate keyword data source | 1→4 |
 | 6 | Supply vector logo originals | Crisp logo at all sizes | 1/2 |
 | 7 | Confirm a publishable business address | Local SEO, `LocalBusiness` schema | 2 |
 | 8 | Confirm and purchase the custom domain | Root `robots.txt`, brand email | 2 |
