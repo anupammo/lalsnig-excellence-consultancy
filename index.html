@@ -37,6 +37,12 @@
 <!-- ===== Styles (self-hosted: zero third-party requests) ================ -->
 <link rel="preload" href="assets/fonts/inter-var-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/barlow-semi-condensed-700-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- LCP image: preloaded so the scanner starts it before the stylesheets resolve -->
+<link rel="preload" as="image" type="image/webp" fetchpriority="high" imagesizes="100vw"
+      imagesrcset="assets/img/hero-conveyor-coal-640.webp 640w,
+                   assets/img/hero-conveyor-coal-960.webp 960w,
+                   assets/img/hero-conveyor-coal-1440.webp 1440w,
+                   assets/img/hero-conveyor-coal-1920.webp 1920w">
 <link rel="stylesheet" href="assets/vendor/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/brand.css">
@@ -189,8 +195,16 @@
   <nav class="navbar navbar-expand-lg" aria-label="Primary">
     <div class="container ls-container">
       <a class="ls-logo navbar-brand p-0 m-0" href="#top" aria-label="LALSNIG Consulting - home">
-        <img src="assets/img/logo-horizontal.png" width="1043" height="300"
-             alt="LALSNIG Consulting logo" decoding="async">
+        <picture>
+          <source type="image/webp" sizes="(max-width: 575.98px) 125px, 160px"
+                  srcset="assets/img/logo-horizontal-260.webp 260w,
+                          assets/img/logo-horizontal-440.webp 440w">
+          <img src="assets/img/logo-horizontal-440.png" width="440" height="127"
+               sizes="(max-width: 575.98px) 125px, 160px"
+               srcset="assets/img/logo-horizontal-260.png 260w,
+                       assets/img/logo-horizontal-440.png 440w"
+               alt="LALSNIG Consulting logo" decoding="async">
+        </picture>
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
               data-bs-target="#lsPrimaryNav" aria-controls="lsPrimaryNav"
@@ -221,8 +235,17 @@
   <section class="ls-hero" aria-labelledby="hero-title">
     <div class="ls-hero__media">
       <picture>
-        <source srcset="assets/img/hero-conveyor-coal.webp" type="image/webp">
-        <img src="assets/img/hero-conveyor-coal.jpg" width="1920" height="1080"
+        <source type="image/webp" sizes="100vw"
+                srcset="assets/img/hero-conveyor-coal-640.webp 640w,
+                        assets/img/hero-conveyor-coal-960.webp 960w,
+                        assets/img/hero-conveyor-coal-1440.webp 1440w,
+                        assets/img/hero-conveyor-coal-1920.webp 1920w">
+        <img src="assets/img/hero-conveyor-coal-1440.jpg" sizes="100vw"
+             srcset="assets/img/hero-conveyor-coal-640.jpg 640w,
+                     assets/img/hero-conveyor-coal-960.jpg 960w,
+                     assets/img/hero-conveyor-coal-1440.jpg 1440w,
+                     assets/img/hero-conveyor-coal-1920.jpg 1920w"
+             width="1920" height="1080"
              alt="Aerial view of a stacker-reclaimer feeding a coal stockyard conveyor system"
              fetchpriority="high" decoding="async">
       </picture>
@@ -258,8 +281,16 @@
         <div class="col-lg-5">
           <div class="ls-hero__card text-center">
             <div class="ls-hero__chip mb-4">
-              <img src="assets/img/logo-lalsnig-consulting-420.png" width="420" height="443"
-                   alt="LALSNIG Consulting - Excellence, Transformation, Sustainable Growth" decoding="async">
+              <picture>
+                <source type="image/webp" sizes="(max-width: 575.98px) 133px, 169px"
+                        srcset="assets/img/logo-lalsnig-consulting-420-260.webp 260w,
+                                assets/img/logo-lalsnig-consulting-420-420.webp 420w">
+                <img src="assets/img/logo-lalsnig-consulting-420-420.png" width="420" height="443"
+                     sizes="(max-width: 575.98px) 133px, 169px"
+                     srcset="assets/img/logo-lalsnig-consulting-420-260.png 260w,
+                             assets/img/logo-lalsnig-consulting-420-420.png 420w"
+                     alt="LALSNIG Consulting - Excellence, Transformation, Sustainable Growth" decoding="async">
+              </picture>
             </div>
             <p class="ls-lede ls-lede--on-dark mx-auto mb-0" style="max-width:34ch">
               Delivering safe, efficient and cost-effective conveying solutions for your business.
@@ -598,8 +629,15 @@
   <section class="ls-section ls-section--inverse position-relative overflow-hidden" id="expertise" aria-labelledby="expertise-title">
     <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index:0;opacity:.16" aria-hidden="true">
       <picture>
-        <source srcset="assets/img/band-conveyor-aerial.webp" type="image/webp">
-        <img src="assets/img/band-conveyor-aerial.jpg" width="1920" height="823"
+        <source type="image/webp" sizes="100vw"
+                srcset="assets/img/band-conveyor-aerial-960.webp 960w,
+                        assets/img/band-conveyor-aerial-1440.webp 1440w,
+                        assets/img/band-conveyor-aerial-1920.webp 1920w">
+        <img src="assets/img/band-conveyor-aerial-1440.jpg" sizes="100vw"
+             srcset="assets/img/band-conveyor-aerial-960.jpg 960w,
+                     assets/img/band-conveyor-aerial-1440.jpg 1440w,
+                     assets/img/band-conveyor-aerial-1920.jpg 1920w"
+             width="1920" height="823"
              style="width:100%;height:100%;object-fit:cover" loading="lazy" decoding="async" alt="">
       </picture>
     </div>
@@ -1045,8 +1083,16 @@
     <div class="row g-4 gy-5">
       <div class="col-lg-4">
         <div class="ls-footer__logo mb-4">
-          <img src="assets/img/logo-horizontal.png" width="1043" height="300"
-               alt="LALSNIG Consulting" loading="lazy" decoding="async">
+          <picture>
+            <source type="image/webp" sizes="190px"
+                    srcset="assets/img/logo-horizontal-260.webp 260w,
+                            assets/img/logo-horizontal-440.webp 440w">
+            <img src="assets/img/logo-horizontal-440.png" width="440" height="127"
+                 sizes="190px"
+                 srcset="assets/img/logo-horizontal-260.png 260w,
+                         assets/img/logo-horizontal-440.png 440w"
+                 alt="LALSNIG Consulting" loading="lazy" decoding="async">
+          </picture>
         </div>
         <p class="mb-0" style="max-width:38ch">
           Conveyor belt consulting, process excellence and workforce capability &mdash;
