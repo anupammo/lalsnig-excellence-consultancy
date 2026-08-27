@@ -127,8 +127,9 @@ Lighthouse 12, headless Chrome, mobile preset (4× CPU throttle, simulated slow 
 
 **Structured data — validated 24 August 2026** at `validator.schema.org` against the live URL:
 **0 errors, 0 warnings.** Graph extracted intact — `Organization` + `ProfessionalService` (with
-`ContactPoint`, `Country`, 2 × `Person`, `OfferCatalog` → 6 × `Offer` → `Service`), `WebSite`,
-and `FAQPage` → 6 × `Question` → `Answer`.
+`ContactPoint`, `Country`, 2 × `Person`, `OfferCatalog` → `Offer` → `Service`), `WebSite`,
+and `FAQPage` → `Question` → `Answer`. Re-validated after the business-excellence repositioning
+(8 offers, 7 Q&As) and after the move to `lalsnigconsulting.com`.
 
 `brand.html` scores SEO 66. That is the `noindex` penalty and is correct — the page is a sign-off
 artefact and must stay out of the index.
@@ -143,6 +144,7 @@ Run the per-page checklist in [07 §8](07-seo-onpage-spec.md#8-per-page-pre-publ
 - [ ] Title and description render un-truncated in a SERP preview tool
 - [ ] Open Graph preview renders correctly (LinkedIn Post Inspector, Facebook Sharing Debugger)
 - [ ] No unintended `noindex` — **check this first when a page will not index**
+- [ ] After any host or path change: fetch the live pages and confirm the canonical, `og:url` and every root-absolute asset path point at the current origin
 
 ## 6. Content
 
@@ -209,7 +211,7 @@ A phase closes when **all** of these are true:
 | 1 | Logo files are raster extractions from the deck | Client | Vector originals |
 | 2 | Trainer portraits are low-resolution deck extractions | Client | Professional headshots |
 | 3 | All photography is stock | Client | Real site photography |
-| 4 | `robots.txt` is inert on a `github.io` project path | Delivery | Custom domain |
+| ~~4~~ | ~~`robots.txt` is inert on a `github.io` project path~~ | — | ✅ **Cleared 24 Aug 2026** — custom domain live |
 | 5 | No business address ⇒ no `LocalBusiness` schema, no Google Business Profile | Client | Confirmed address |
 | 6 | No analytics ⇒ no conversion data | Client | Phase 4 consent decision |
 | 7 | No contact form — enquiries rely on `tel:`/`mailto:` | Delivery | Phase 2 form provider |

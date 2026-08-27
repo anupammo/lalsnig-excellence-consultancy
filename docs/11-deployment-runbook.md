@@ -1,13 +1,13 @@
 # 11 — Deployment runbook
 
 **Host:** GitHub Pages · **Pipeline:** branch deployment (Actions workflow ready but billing-blocked) ·
-**Live URL:** https://anupammo.github.io/lalsnig-excellence-consultancy/
+**Live URL:** https://lalsnigconsulting.com/
 
 ---
 
 ## 0. Current deployment mode — branch, not Actions
 
-**The site is live** at https://anupammo.github.io/lalsnig-excellence-consultancy/, published by
+**The site is live** at https://lalsnigconsulting.com/, published by
 **classic branch deployment** (`main` / `/ (root)`), not by the Actions workflow.
 
 ### Why
@@ -133,10 +133,20 @@ chrome --headless=new --disable-gpu --hide-scrollbars \
        --screenshot=out.png "http://localhost:8000/"
 ```
 
-## 5. Custom domain (Phase 2)
+## 5. Custom domain — ✅ done, 24 August 2026
 
-Attaching a domain is what unblocks a working `robots.txt`, a brand email address, and
-`LocalBusiness` schema.
+**Live at https://lalsnigconsulting.com/.** `anupammo.github.io/lalsnig-excellence-consultancy/`
+now issues a 301 to it. Attaching the domain unblocked a working `robots.txt`, a brand email address,
+and `LocalBusiness` schema.
+
+> **The migration is not the DNS change — it is everything in step 6.** When the domain went live,
+> every absolute URL on the site still pointed at the old origin, so the canonical told Google that a
+> URL which 301-redirects was the preferred version. `404.html` was worse: its assets were written as
+> `/lalsnig-excellence-consultancy/…`, which is a 404 on a domain-root site, so the error page
+> rendered completely unstyled with dead links. Both were caught by fetching the live pages after the
+> switch. **Always re-fetch, never assume the deploy carried over.**
+
+Kept for reference, and for the next domain change:
 
 1. Buy the domain. Prefer `.in` or `.com`; keep the brand name intact and unhyphenated.
 2. **DNS — apex domain** (`lalsnigconsulting.com`), four `A` records:
@@ -148,17 +158,20 @@ Attaching a domain is what unblocks a working `robots.txt`, a brand email addres
    This commits a `CNAME` file to the repository root; leave it there.
 5. Wait for DNS propagation, then tick **Enforce HTTPS**.
 6. **Then, in order:**
-   - [ ] Update every absolute URL: canonicals, `og:url`, `og:image`, `twitter:image`, JSON-LD `@id`s and `url`s, `sitemap.xml`, the `Sitemap:` line in `robots.txt`. **Miss one and canonicals point at the old host, which is worse than having no canonical at all.**
-   - [ ] Add the new property in Google Search Console and use **Change of Address**
-   - [ ] Resubmit `sitemap.xml`
-   - [ ] Update the LinkedIn profile and any directory listings
+   - [x] Update every absolute URL: canonicals, `og:url`, `og:image`, `twitter:image`, JSON-LD `@id`s and `url`s, `sitemap.xml`, the `Sitemap:` line in `robots.txt`. **Miss one and canonicals point at the old host, which is worse than having no canonical at all.** *(22 rewritten)*
+   - [x] Rewrite every root-absolute path that assumed the project subpath. `404.html` had seven. *(7 rewritten)*
+   - [ ] 👤 Add the new property in Google Search Console and use **Change of Address**
+   - [ ] 👤 Resubmit `sitemap.xml`
+   - [ ] 👤 Update the LinkedIn profile and any directory listings
+   - [ ] 👤 Confirm **Enforce HTTPS** is ticked in Settings → Pages
 
-> ### `robots.txt` caveat
-> `robots.txt` is only honoured at a domain root. On the current project path it resolves to
-> `anupammo.github.io/lalsnig-excellence-consultancy/robots.txt`, which crawlers ignore. Our file is
-> therefore inert until the custom domain exists — at which point it starts working unchanged, with no
-> edit needed. Until then, indexing is controlled per page by `<meta name="robots">`, which is why
-> `brand.html` and `404.html` carry `noindex` in their markup.
+> ### `robots.txt` — now live
+> `robots.txt` is only honoured at a domain root. On the old `github.io` project path it resolved to
+> `anupammo.github.io/lalsnig-excellence-consultancy/robots.txt`, which crawlers ignore, so the file
+> was inert. **Since the custom domain went live it is served from the domain root and is honoured**,
+> exactly as designed, with no edit needed. Per-page `<meta name="robots">` still carries the
+> authoritative `noindex` on `brand.html` and `404.html` — belt and braces, and it survives any
+> future host change.
 
 ## 6. Rollback
 

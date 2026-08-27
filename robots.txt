@@ -1,7 +1,9 @@
 User-agent: *
 Allow: /
 
-# Design-system sign-off page is intentionally out of the index
+# Design-system sign-off page is intentionally out of the index.
+# Now that a custom domain serves the site from its root, this file is actually
+# honoured by crawlers - on the old github.io project path it was inert.
 Disallow: /brand.html
 
-Sitemap: https://anupammo.github.io/lalsnig-excellence-consultancy/sitemap.xml
+Sitemap: https://lalsnigconsulting.com/sitemap.xml

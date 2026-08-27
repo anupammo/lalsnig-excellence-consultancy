@@ -116,7 +116,7 @@ The status board. Tick boxes here, not in chat.
 - [x] GitHub Actions workflow with a pre-deploy broken-link check
 - [x] `.nojekyll` so `_`-prefixed paths are never swallowed
 - [x] Pushed to `main`
-- [x] ✅ **Pages enabled and the site is live** — https://anupammo.github.io/lalsnig-excellence-consultancy/ (branch deployment, `main` / `(root)`)
+- [x] ✅ **Pages enabled and the site is live** — https://lalsnigconsulting.com/ (branch deployment, `main` / `(root)`)
 - [x] Every asset, both extra pages and the custom 404 verified over HTTPS
 - [x] `scripts/check-links.mjs` — one validation script run by both CI and you locally
 - [ ] ⛔ Actions-based deploy still blocked: *"your account is locked due to a billing issue"*. Clear GitHub billing, then switch the Pages source to "GitHub Actions" to restore the pre-deploy gate
@@ -135,7 +135,7 @@ The status board. Tick boxes here, not in chat.
 - [ ] **Decide the multi-page approach**: hand-maintained HTML partials vs. a static site generator (11ty). Affects every subsequent page
 - [ ] **Choose a form provider**: Formspree / Web3Forms / Google Forms — compare spam handling, DPDP posture, free-tier limits
 - [ ] 👤 **Confirm a publishable business address** ⛔ blocks 2.6 and `LocalBusiness` schema
-- [ ] 👤 **Confirm the custom domain** (purchase + DNS access)
+- [x] ✅ **Custom domain live** — https://lalsnigconsulting.com/ (24 Aug 2026)
 
 ### 2B. Pages
 
@@ -156,8 +156,10 @@ The status board. Tick boxes here, not in chat.
 
 - [ ] Shared header/footer without duplication
 - [ ] Contact form live and delivering
-- [ ] Custom domain + HTTPS + `CNAME` file
-- [ ] Root-level `robots.txt` (unblocked by the custom domain)
+- [x] Custom domain + HTTPS + `CNAME` file
+- [x] All 22 absolute URLs and 7 root-absolute paths migrated off the old origin
+- [ ] 👤 Confirm **Enforce HTTPS** is ticked (Settings → Pages)
+- [x] Root-level `robots.txt` — now actually honoured by crawlers
 - [ ] `BreadcrumbList` + per-page `Service` schema
 - [ ] Regenerate `sitemap.xml` for all pages
 - [ ] Internal-link audit — no orphans, everything ≤ 2 clicks from home
@@ -235,7 +237,8 @@ The status board. Tick boxes here, not in chat.
 | 12 | Verify the site in **Google Search Console** and submit `sitemap.xml` | All organic measurement, and the only accurate keyword data source | 1→4 |
 | 6 | Supply vector logo originals | Crisp logo at all sizes | 1/2 |
 | 7 | Confirm a publishable business address | Local SEO, `LocalBusiness` schema | 2 |
-| 8 | Confirm and purchase the custom domain | Root `robots.txt`, brand email | 2 |
+| ~~8~~ | ~~Confirm and purchase the custom domain~~ | ✅ **done — lalsnigconsulting.com is live** | 2 |
+| 13 | **Google Search Console: add `lalsnigconsulting.com`, submit `sitemap.xml`, run Change of Address** from the old github.io property | All organic measurement | 1→4 |
 | 9 | Supply professional photography | Replacing stock + deck-extracted portraits | 2 |
 | 10 | Approve case studies / obtain end-client permission | Highest-value credibility asset | 2 |
 | 11 | Decide the analytics/consent posture | All of Phase 4 | 4 |

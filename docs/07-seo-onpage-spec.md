@@ -96,25 +96,25 @@ a manual-action risk, not just a wasted opportunity.
 | Item | Status |
 |---|---|
 | `sitemap.xml` — every indexable URL, accurate `lastmod` | ✅ 1 URL; regenerate each phase |
-| `robots.txt` | ✅ present — **but see the caveat below** |
+| `robots.txt` | ✅ present and now honoured — see below |
 | `.nojekyll` | ✅ so GitHub Pages does not swallow `_`-prefixed paths |
 | HTTPS | ✅ enforced by GitHub Pages |
 | Mobile-friendly | ✅ verified at 360 / 430 / 768 / 1024 / 1280 / 1600 px |
 | No horizontal scroll at any width | ✅ audited and fixed |
 | Custom 404 | ✅ `404.html` |
-| Canonical on every page | ✅ |
+| Canonical on every page | ✅ absolute, on `lalsnigconsulting.com` |
 | No duplicate content | ✅ one page today; Phase 2 enforces one-keyword-per-page |
 | Crawl depth ≤ 3 | ✅ |
 | Core Web Vitals | Lab: strong by construction. **Field data pending** — needs Phase 4 |
 
-> ### `robots.txt` caveat
-> Crawlers only read `robots.txt` at the **domain root**. On a project Pages site the file resolves to
+> ### `robots.txt` — live since the custom domain
+> Crawlers only read `robots.txt` at the **domain root**. On the old project Pages path it resolved to
 > `anupammo.github.io/lalsnig-excellence-consultancy/robots.txt`, which crawlers ignore in favour of
-> `anupammo.github.io/robots.txt` — a file this repository does not control. Ours is therefore
-> effectively inert until a custom domain is attached (Phase 2), at which point it becomes live
-> unchanged. **Until then, indexing control relies entirely on per-page `<meta name="robots">`,** which
-> is why `brand.html` and `404.html` carry `noindex` in the markup rather than relying on a `Disallow`.
-> The sitemap can still be submitted directly in Search Console — that path does not involve `robots.txt`.
+> `anupammo.github.io/robots.txt` — a file this repository does not control — so ours was inert.
+> **Since 24 August 2026 the site is served from `lalsnigconsulting.com`, so the file is honoured.**
+> Per-page `<meta name="robots">` remains the authoritative control on `brand.html` and `404.html`,
+> which is deliberate: it survives any future host change, and `Disallow` only stops crawling, not
+> indexing of a URL discovered elsewhere.
 
 ## 7. Performance
 

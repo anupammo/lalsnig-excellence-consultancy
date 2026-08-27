@@ -4,8 +4,8 @@ Business excellence consulting — lean manufacturing, Lean Six Sigma, industria
 workforce capability, with a specialist practice in conveyor and bulk material handling.
 Static site: **HTML5 + Bootstrap 5.3.3 + vanilla JS**, deployed to GitHub Pages by GitHub Actions.
 
-**Live:** https://anupammo.github.io/lalsnig-excellence-consultancy/
-**Design system:** https://anupammo.github.io/lalsnig-excellence-consultancy/brand.html
+**Live:** https://lalsnigconsulting.com/
+**Design system:** https://lalsnigconsulting.com/brand.html
 
 ---
 

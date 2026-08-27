@@ -26,8 +26,8 @@ Source of truth for scope, sequence and status is **[03-progress-checklist.md](0
 | **Business** | Business excellence consulting — lean manufacturing, Lean Six Sigma, industrial engineering, data analytics and workforce capability, with a specialist practice in conveyor and bulk material handling |
 | **Primary contact** | Mr. Ranjit Mondal — +91 90517 96271 — ranjit_jumech1@yahoo.co.in |
 | **Repository** | https://github.com/anupammo/lalsnig-excellence-consultancy |
-| **Live URL (Phase 1)** | https://anupammo.github.io/lalsnig-excellence-consultancy/ |
-| **Design-system sign-off page** | https://anupammo.github.io/lalsnig-excellence-consultancy/brand.html |
+| **Live URL (Phase 1)** | https://lalsnigconsulting.com/ |
+| **Design-system sign-off page** | https://lalsnigconsulting.com/brand.html |
 | **Stack** | Static HTML5 + Bootstrap 5.3.3 (self-hosted), vanilla JS, GitHub Pages via branch deployment |
 | **Design source** | `LALSNIG EXCELLENCE CONSULTANCY.pdf` (8-page company deck, in the repository root) |
 

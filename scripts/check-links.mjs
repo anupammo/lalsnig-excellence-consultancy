@@ -21,7 +21,9 @@ const REQUIRED = [
   'assets/css/brand.css', 'assets/css/fonts.css', 'assets/js/site.js',
   'assets/vendor/bootstrap/bootstrap.min.css', 'assets/vendor/bootstrap/bootstrap.bundle.min.js',
 ];
-// Root-absolute links are written against the GitHub Pages project path.
+// The site is served from the root of lalsnigconsulting.com, so root-absolute
+// links resolve directly. The old GitHub Pages project prefix is still stripped
+// so any straggler from before the domain move is caught rather than reported.
 const BASE_PATH = '/lalsnig-excellence-consultancy/';
 const EXTERNAL = /^(https?:|mailto:|tel:|data:|\/\/)/i;
 
