@@ -92,7 +92,7 @@ pairing gets measured with it before it ships.
 - [x] All budgets met on **the deployed URL**, not on `file://`
 - [ ] Tested on a throttled connection (Slow 4G) at least once
 
-### Measured — 24 August 2026, live URL
+### Measured — 24 August 2026
 
 Lighthouse 12, headless Chrome, mobile preset (4× CPU throttle, simulated slow 4G).
 
@@ -114,6 +114,11 @@ Lighthouse 12, headless Chrome, mobile preset (4× CPU throttle, simulated slow 
 > the same laptop. LCP, CLS, FCP and page weight were stable across all seven runs. Do not quote "98"
 > as the score; quote the median and the range, and replace both with Search Console field data once
 > Phase 4 lands. Lab numbers describe the machine as much as the site.
+
+**Re-measured on `lalsnigconsulting.com` after the domain move and the repositioning:**
+mobile **91 / 92 / 92** across three runs, Accessibility, Best Practices and SEO **100** on all three,
+LCP 2.3–2.8 s, CLS **0**. Consistently a few points below the `github.io` figures — the custom domain
+adds a DNS lookup and its edge cache is colder — and still above the ≥ 90 budget.
 
 **What moved the numbers** (first measurement was Performance 84, LCP 4.2 s):
 
