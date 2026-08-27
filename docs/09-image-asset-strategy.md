@@ -100,7 +100,7 @@ happens to help SEO, never the other way round.
 | Content image | Describe what is shown, specifically. Relevant terms appear naturally because the subject *is* the topic | `Aerial view of a stacker-reclaimer feeding a coal stockyard conveyor system` |
 | Decorative image | `alt=""` — so screen readers skip it | Expertise-band background |
 | Logo | The organisation name | `LALSNIG Consulting logo` |
-| Portrait | Name and role | `Portrait of Mr. Ranjit Mondal, conveyor belt and Lean Six Sigma consultant` |
+| Portrait | Name and role | `Portrait of Mr. Ranjit Mondal, business excellence and Lean Six Sigma consultant` |
 | Image inside a link | Describe the destination, not the picture | — |
 | Never | Keyword lists, `alt="image"`, `alt="photo"`, filenames, or a missing `alt` attribute | — |
 

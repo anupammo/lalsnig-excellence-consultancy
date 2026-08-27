@@ -10,8 +10,8 @@ Keyword assignments live in [06-keyword-research.md](06-keyword-research.md); th
 
 | Element | Rule | Live example (`index.html`) |
 |---|---|---|
-| `<title>` | 50–65 chars. Primary keyword first, brand last, separated by a pipe | `Conveyor Belt Consultants & Lean Six Sigma Training \| LALSNIG` — 61 chars |
-| `<meta name="description">` | 140–160 chars. Written to earn the click, not to rank. Include the primary keyword and a concrete benefit | 148 chars |
+| `<title>` | 50–65 chars. Primary keyword first, brand last, separated by a pipe | `Business Excellence Consultants & Lean Six Sigma Training \| LALSNIG` — 68 chars |
+| `<meta name="description">` | 140–160 chars. Written to earn the click, not to rank. Include the primary keyword and a concrete benefit | 147 chars |
 | `<link rel="canonical">` | **Absolute URL, on every page, always** — including the page's own canonical | ✅ |
 | `<meta name="robots">` | `index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1` on public pages; `noindex, follow` on `brand.html` and `404.html` | ✅ |
 | `<html lang>` | `en-IN` | ✅ |
@@ -36,16 +36,17 @@ and on an image-led site that is a measurable click-through difference.
 | Semantic landmarks: `<header> <nav> <main> <article> <section> <footer>` | Structure without ARIA gymnastics |
 | Every `<section>` carries `aria-labelledby` pointing at its heading | Named regions for assistive tech |
 | Lists as real `<ul>`/`<ol>`, tables as real `<table>` | Eligible for rich results; scannable |
-| Descriptive link text | "conveyor belt troubleshooting", never "click here" |
+| Descriptive link text | "lean manufacturing consultant", never "click here" |
 | **3–5 internal links minimum**, all descriptive | Distributes authority; no orphan pages |
 | External links to authorities where they add credibility (ISO, CEMA, DIN), `rel="noopener"` | Corroboration signal |
 
 ## 3. URLs
 
 ```
-✅  /services/conveyor-belt-design-review/
+✅  /services/lean-manufacturing/
+✅  /specialism/conveyor-bulk-handling/
 ❌  /services/page2.html
-❌  /services/Conveyor_Belt_Design_And_Review_Services_India/
+❌  /services/Lean_Manufacturing_Consulting_Services_India/
 ```
 
 Lowercase · hyphens not underscores · no stop-word padding · trailing slash on directory-style paths ·
@@ -57,7 +58,7 @@ change-of-address. Get slugs right the first time.
 
 | Rule | Implementation |
 |---|---|
-| Descriptive alt text on every content image | "Aerial view of a stacker-reclaimer feeding a coal stockyard conveyor system" — describes the image, includes relevant terms naturally, never keyword-stuffed |
+| Descriptive alt text on every content image | "Aerial view of a stacker-reclaimer feeding a coal stockyard conveyor system" — describes what is actually shown, includes relevant terms naturally, never keyword-stuffed |
 | `alt=""` on decorative images | The expertise-band background carries `alt=""` |
 | Explicit `width` and `height` on every `<img>` | Zero CLS |
 | Modern format with fallback | `<picture>` → WebP `<source>` + JPEG `<img>` |
@@ -75,8 +76,8 @@ Currently on the home page, as a single `@graph`:
 | `Organization` + `ProfessionalService` | Entity identity, logo, contact, `areaServed`, `knowsAbout`, `sameAs` → LinkedIn |
 | `WebSite` | Site-level entity, `publisher` reference |
 | `Person` × 2 | Both trainers, with `jobTitle` and `sameAs` — feeds E-E-A-T |
-| `OfferCatalog` (6 × `Service`) | Machine-readable service list |
-| `FAQPage` (6 Q&As) | Rich-result eligible; the FAQ answers on the page and in the schema are **identical**, which Google requires |
+| `OfferCatalog` (8 × `Service`) | Machine-readable service list — six business-excellence lines, the conveyor specialism, and web/digital |
+| `FAQPage` (7 Q&As) | Rich-result eligible. The answers on the page and in the schema are **identical**, which Google requires — both are generated from one array in the FAQ build script, so they cannot drift |
 
 To add in Phase 2:
 
@@ -144,6 +145,7 @@ Copy this into the PR description for every new page.
 [ ] 300+ words (700+ for service/article pages)
 [ ] Every image: descriptive alt (or alt=""), width+height, WebP+fallback, lazy below fold
 [ ] 3+ descriptive internal links out; page is linked to from somewhere
+[ ] Every same-page #fragment resolves to a real id (scripts/check-links.mjs enforces this)
 [ ] URL slug: lowercase, hyphens, no stop-word padding
 [ ] JSON-LD added and validated in Rich Results Test
 [ ] Open Graph + Twitter tags with a correct image

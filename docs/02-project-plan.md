@@ -108,7 +108,7 @@ Turning one page into a site with enough surface area to rank for more than the 
 
 | # | Deliverable | Notes |
 |---|---|---|
-| 2.1 | Multi-page IA build-out per [05-information-architecture.md](05-information-architecture.md) | 6 service pages, 6 industry pages, 3 training pages, About, Contact |
+| 2.1 | Multi-page IA build-out per [05-information-architecture.md](05-information-architecture.md) | 6 service pages, the conveyor specialism page (**build first** — most winnable), 6 industry pages, 3 training pages, About, Contact |
 | 2.2 | 700–1,200 words of genuinely useful copy per page | Each page owns one primary keyword; no two pages compete |
 | 2.3 | Shared header/footer without a build step | Static includes are impossible on Pages; use a small documented HTML partial convention or add a lightweight generator (11ty) — **decision required at phase start** |
 | 2.4 | Working contact form | GitHub Pages cannot process POST. Options: Formspree, Web3Forms, Google Forms embed. Evaluate on spam handling, GDPR/DPDP posture and free-tier limits |

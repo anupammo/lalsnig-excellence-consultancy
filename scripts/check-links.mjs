@@ -54,13 +54,35 @@ for (const page of PAGES) {
   if (!existsSync(abs)) continue;
   const html = readFileSync(abs, 'utf8');
 
+  // Every id/name this page defines, so same-page fragments can be checked.
+  const anchors = new Set([
+    ...[...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]),
+    ...[...html.matchAll(/<a\b[^>]*\bname="([^"]+)"/g)].map(m => m[1]),
+  ]);
+
   for (const m of html.matchAll(ATTR)) {
     const raw = m[0];
     const isSet = /^(?:srcset|imagesrcset)/i.test(raw);
     for (const ref of candidates(m[1], isSet)) {
-      if (EXTERNAL.test(ref) || ref.startsWith('#') || ref === '') continue;
+      if (EXTERNAL.test(ref) || ref === '') continue;
+
+      // Same-page fragment: the target id must exist. A renamed section leaves
+      // dead nav and footer links that resolve to nothing and fail silently.
+      if (ref.startsWith('#')) {
+        const id = decodeURIComponent(ref.slice(1));
+        if (id && !anchors.has(id)) fail(page, `fragment has no target on this page -> ${ref}`);
+        continue;
+      }
+
       const clean = ref.split(/[?#]/)[0];
-      if (clean === '') continue;                       // e.g. "/base/#services"
+      const frag = ref.includes('#') ? ref.slice(ref.indexOf('#') + 1) : '';
+      if (clean === '') {
+        // "/base/#services" - a fragment on this same page, written absolutely.
+        if (frag && !anchors.has(decodeURIComponent(frag))) {
+          fail(page, `fragment has no target on this page -> ${ref}`);
+        }
+        continue;
+      }
       const rel = clean.startsWith(BASE_PATH) ? clean.slice(BASE_PATH.length)
                 : clean.startsWith('/') ? clean.slice(1)
                 : clean;

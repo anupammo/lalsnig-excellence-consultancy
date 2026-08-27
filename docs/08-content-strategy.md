@@ -9,7 +9,7 @@ under-served set of questions.
 
 | Persona | Their trigger | What convinces them | What loses them |
 |---|---|---|---|
-| **Maintenance head / plant engineer** — the searcher | A belt that keeps failing; a downtime figure they have to explain | Diagnostic specificity. Naming the failure mode they are looking at | Marketing language, vague "solutions", no technical depth |
+| **Maintenance head / plant engineer** — the searcher | A recurring failure; a downtime figure they have to explain | Diagnostic specificity. Naming the failure mode they are looking at | Marketing language, vague "solutions", no technical depth |
 | **Operations / plant manager** — the budget | Throughput or cost pressure; an audit finding | Quantified outcomes, a defined process, low disruption | No evidence, no method, no idea what it costs |
 | **HR / L&D manager** — the training buyer | A skills gap, a certification requirement, an annual training plan | Programme structure, trainer credentials, on-site delivery | Generic course catalogues indistinguishable from ten others |
 | **Procurement** — the gatekeeper | An approved-vendor process | Registration details, references, insurance, compliance | Anything that looks like a one-man operation with no paperwork |
@@ -35,15 +35,31 @@ either — technical depth up front, business consequence stated plainly alongsi
 "trusted by leading companies" without naming one. A specialist's credibility is destroyed faster by
 one unsupportable number than it is built by ten good ones.
 
+**The category claim needs the specialism to stay credible.** "Business excellence consultant" is a
+claim anyone can make; "18 years inside conveyor belt manufacturing" is one almost nobody can. Lead
+with the category, prove it with the specialism — never drop the second to sound broader.
+
 ## 3. Content pillars
 
 Three topic clusters. Each pillar page is comprehensive; each cluster article answers one question and
 links back up.
 
-### Pillar 1 — Conveyor belt troubleshooting *(the traffic engine)*
+### Pillar 1 — Operational improvement method *(the category engine)*
 
-The highest-volume problem-led cluster and the one where this business's expertise is least
-substitutable.
+The pillar that earns the "business excellence" claim. Broad audience, moderate competition; wins on
+specificity and worked examples rather than on definitions.
+
+- OEE: the three losses people mis-assign
+- Value stream mapping, walked through on a real line
+- Choosing between 5 Why, fishbone and fault tree
+- SMED and changeover reduction in practice
+- Standard work without the bureaucracy
+- Line balancing, worked example
+
+### Pillar 1b — Conveyor & bulk handling troubleshooting *(the traffic engine)*
+
+Still the highest-intent, least-substitutable cluster, and the fastest route to page one. The
+repositioning changed what the business is called, not where it can win in search.
 
 - Belt mistracking: causes and systematic correction
 - Spillage and carry-back: transfer point and cleaning system fixes
@@ -63,9 +79,9 @@ Reaches the reader who has budget and a reliability target.
 - Extending belt life: the levers that actually move
 - Conveyor safety audit checklist
 
-### Pillar 3 — Operational excellence in bulk handling *(the training engine)*
+### Pillar 3 — Capability & workforce *(the training engine)*
 
-Bridges the conveyor identity into the Lean/Six Sigma offer, which is where the larger audience is.
+Reaches the L&D and HR buyer, who searches differently from the engineer and signs differently too.
 
 - Applying Lean Six Sigma to maintenance processes
 - Value stream mapping a material-handling operation

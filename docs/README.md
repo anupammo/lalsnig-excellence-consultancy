@@ -10,7 +10,7 @@ Source of truth for scope, sequence and status is **[03-progress-checklist.md](0
 | 03 | [Progress checklist](03-progress-checklist.md) | What is done, what is next, who owns it | Every working session |
 | 04 | [Brand & design system](04-brand-design-system.md) | Colour, typography, spacing, components, logo rules, measured contrast | Building any UI, or signing off Phase 1 |
 | 05 | [Information architecture](05-information-architecture.md) | Sitemap, URL scheme, navigation, page templates | Before adding pages in Phase 2 |
-| 06 | [Keyword research](06-keyword-research.md) | The keyword universe, intent map, page-to-keyword assignment, validation method | Writing any page or article |
+| 06 | [Keyword research](06-keyword-research.md) | The keyword universe, intent map, page-to-keyword assignment, validation method — **and what the business-excellence repositioning costs in search** | Writing any page or article |
 | 07 | [On-page SEO specification](07-seo-onpage-spec.md) | The rules every page must satisfy: titles, headings, schema, internal links, technical SEO | Building or reviewing any page |
 | 08 | [Content strategy](08-content-strategy.md) | Voice, content pillars, editorial calendar, distribution, organic-reach plan | Planning content |
 | 09 | [Image & asset strategy](09-image-asset-strategy.md) | Licensing, the current image manifest, alt-text rules, optimisation pipeline | Adding or replacing any image |
@@ -23,12 +23,12 @@ Source of truth for scope, sequence and status is **[03-progress-checklist.md](0
 | | |
 |---|---|
 | **Client** | LALSNIG Consulting (Lalsnig Excellence Consultancy) |
-| **Business** | Conveyor belt consulting, operational excellence, Lean Six Sigma and workforce training |
+| **Business** | Business excellence consulting — lean manufacturing, Lean Six Sigma, industrial engineering, data analytics and workforce capability, with a specialist practice in conveyor and bulk material handling |
 | **Primary contact** | Mr. Ranjit Mondal — +91 90517 96271 — ranjit_jumech1@yahoo.co.in |
 | **Repository** | https://github.com/anupammo/lalsnig-excellence-consultancy |
 | **Live URL (Phase 1)** | https://anupammo.github.io/lalsnig-excellence-consultancy/ |
 | **Design-system sign-off page** | https://anupammo.github.io/lalsnig-excellence-consultancy/brand.html |
-| **Stack** | Static HTML5 + Bootstrap 5.3.3 (self-hosted), vanilla JS, GitHub Pages via GitHub Actions |
+| **Stack** | Static HTML5 + Bootstrap 5.3.3 (self-hosted), vanilla JS, GitHub Pages via branch deployment |
 | **Design source** | `LALSNIG EXCELLENCE CONSULTANCY.pdf` (8-page company deck, in the repository root) |
 
 ## Working conventions

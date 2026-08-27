@@ -11,14 +11,14 @@ rewritten in Phase 2 anyway.
 ```
 /                       index.html   — the whole deck, in order, as one narrative
   #about                About us + credentials              (deck p3/p4)
-  #services             Six service cards                   (deck p3/p4)
-  #capability           Five capability pillars             (deck p5)
-  #expertise            Expertise band                      (deck p6)
+  #services             Six business-excellence services    (deck p5 + p4)
+  #specialism           Conveyor & bulk handling practice   (deck p3/p4)
+  #expertise            How we work / what clients buy      (deck p6)
   #industries           Six industry tiles                  (deck p6)
   #process              Five-step process + six outcomes    (deck p7)
   #team                 Two trainer cards                   (deck p2)
   #why-us               Why choose us + commitment quote    (deck p8)
-  #faq                  Six Q&As                            (new — SEO)
+  #faq                  Seven Q&As                          (new — SEO)
   #contact              CTA + contact details               (deck p8)
 
 /brand.html             Design-system sign-off page (noindex)
@@ -35,7 +35,7 @@ rewritten in Phase 2 anyway.
 | 2 | Trust bar | What do I get? |
 | 3 | About | Who are you and do you actually know this? |
 | 4 | Services | What exactly do you do? |
-| 5 | Capability | Can you build my team, not just fix my belt? |
+| 5 | Specialism | Do you actually know my equipment? |
 | 6 | Expertise | Why you and not a manufacturer's rep? |
 | 7 | Industries | Have you worked in my sector? |
 | 8 | Process | What happens if I call? |
@@ -55,12 +55,14 @@ visitor who bounces at any point should have met at least one reason to believe.
 /                                          Home — narrative overview, links into everything
 ├── /about/                                Story, credentials, both trainers, commitment
 ├── /services/                             Hub — six cards linking down
-│   ├── /conveyor-belt-design-review/
-│   ├── /conveyor-troubleshooting-rca/
-│   ├── /conveyor-performance-improvement/
-│   ├── /conveyor-maintenance-support/
-│   ├── /conveyor-safety-compliance/
-│   └── /training-competency/
+│   ├── /lean-manufacturing/
+│   ├── /lean-six-sigma/
+│   ├── /industrial-engineering/
+│   ├── /data-analytics/
+│   ├── /training-competency/
+│   └── /maintenance-reliability/
+├── /specialism/                           Specialist practice hub
+│   └── /conveyor-bulk-handling/           PRIORITY: most winnable page on the site
 ├── /training/                             Hub — capability pillars
 │   ├── /lean-manufacturing/
 │   ├── /lean-six-sigma/
@@ -80,10 +82,20 @@ visitor who bounces at any point should have met at least one reason to believe.
 
 **Crawl depth: 3 maximum.** Every page is reachable within two clicks of home.
 
-The fifth deck capability pillar — *Web Design & Development* — stays on the home page as a listed
-capability but does **not** get its own page. It is a genuine service, but giving it a page would
-split the site's topical identity between "conveyor and operational excellence" and "web agency", and
-the first is what this business needs to be known for. Revisit if it becomes a revenue line.
+The fifth deck capability pillar — *Web Design & Development* — stays on the home page as a paragraph
+under the services grid and does **not** get its own page. It is a genuine service, but giving it a
+page would split the site's topical identity between "business excellence" and "web agency", and the
+first is what this business needs to be known for. Revisit if it becomes a revenue line.
+
+> ### `/services/` vs `/training/` — deliberate, and a cannibalisation risk
+> Three names appear in both hubs. They are different pages with different intent, and they must stay
+> that way: `/services/lean-manufacturing/` targets **`lean manufacturing consultant`** (buy a
+> project), `/training/lean-manufacturing/` targets **`on-site lean manufacturing training`** (buy a
+> programme). Different buyer, different page, different primary keyword — see
+> [06 §3](06-keyword-research.md#3-page-to-keyword-map).
+>
+> **If the two drafts start saying the same thing, merge them.** Two pages splitting one intent is
+> keyword cannibalisation and neither will rank.
 
 ---
 
@@ -91,9 +103,9 @@ the first is what this business needs to be known for. Revisit if it becomes a r
 
 ### Primary (header)
 
-Phase 1: `About · Services · Training · Industries · Process · Team` + a **Get in touch** button.
+Phase 1: `About · Services · Specialism · Industries · Process · Team` + a **Get in touch** button.
 
-Phase 2: same labels, now pointing at pages, with dropdowns on Services / Training / Industries.
+Phase 2: same labels, now pointing at pages, with dropdowns on Services / Specialism / Industries.
 **Maximum seven items.** Adding an eighth means something else comes out.
 
 The CTA button is visually distinct from the nav links and is the only orange element in the header —
@@ -101,8 +113,8 @@ one primary action per view.
 
 ### Footer
 
-Four columns: brand + positioning · Explore (section/page links) · Services (six links) ·
-Contact (phone, email, LinkedIn). Bottom bar carries copyright, the image-licence link, and a link to
+Four columns: brand + positioning · Explore (section/page links) · Services (six lines plus the
+specialism) · Contact (phone, email, LinkedIn). Bottom bar carries copyright, the image-licence link, and a link to
 the design system.
 
 Footer links are real navigation, not an SEO dumping ground.
@@ -136,7 +148,7 @@ FAQ (3-4, service-specific, in FAQPage schema)
 
 ```
 Breadcrumb
-H1 — conveyor belt consultant for {sector}
+H1 — business excellence consultant for {sector}
 Lede — what breaks in this sector specifically
 Hero image (sector)
 H2 — Typical challenges in {sector}
@@ -181,7 +193,7 @@ CTA — relevant service page
 - Lowercase, hyphenated, trailing slash on directory-style paths
 - No dates in article URLs — an article that stays current should not look stale
 - No `/blog/` — `/insights/` positions the content as expertise rather than news
-- Slugs read as the keyword: `/services/conveyor-troubleshooting-rca/`
+- Slugs read as the keyword: `/services/lean-manufacturing/`, `/specialism/conveyor-bulk-handling/`
 - **Never change a live URL.** GitHub Pages cannot issue a 301; a change costs a client-side redirect
   page plus a Search Console change-of-address, and leaks authority either way.
 

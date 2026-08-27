@@ -4,7 +4,7 @@ The status board. Tick boxes here, not in chat.
 
 **Legend:** `[x]` done · `[ ]` open · **⛔** blocked (blocker named) · **👤** needs the client
 
-**Last updated:** 24 August 2026
+**Last updated:** 24 August 2026 (repositioned to business excellence)
 
 ---
 
@@ -84,7 +84,7 @@ The status board. Tick boxes here, not in chat.
 - [x] Five-step process + six outcomes — deck page 7
 - [x] Two trainer cards — deck page 2
 - [x] Why-us + commitment quote — deck page 8
-- [x] FAQ accordion (new, SEO-driven)
+- [x] FAQ accordion (new, SEO-driven) — 7 Q&As, page copy and schema generated from one source
 - [x] Contact CTA + footer — deck page 8
 - [x] Branded 404 page
 - [x] Design-system sign-off page (`brand.html`, `noindex`)
@@ -108,6 +108,8 @@ The status board. Tick boxes here, not in chat.
 - [x] Run Lighthouse against the deployed URL — mobile **86–98 (median 96) / 100 / 100 / 100**, desktop **99 / 100 / 100 / 100**; see [10 §4](10-qa-definition-of-done.md#measured--24-august-2026-live-url)
 - [x] Cut mobile page weight 697 KB → ~330 KB and LCP 4.2 s → 2.4 s (responsive images, scrim-aware compression, forced-reflow fix)
 - [x] Fix two contrast failures axe found on the live pages (numbered service chips, `<code>` on navy)
+- [x] **Reposition the content from conveyor-led to business-excellence-led** — services grid, specialist practice section, FAQ, schema, nav and footer restructured; SEO consequences recorded in [06 §0](06-keyword-research.md#0-what-the-repositioning-costs-and-what-to-do-about-it)
+- [x] Add same-page fragment validation to `scripts/check-links.mjs` — the rename left a dead `#capability` link in the footer that nothing would have caught
 
 ### 1G. Deployment
 

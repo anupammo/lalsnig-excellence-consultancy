@@ -3,20 +3,20 @@
 **Project:** LALSNIG Consulting website
 **Sponsor:** Mr. Ranjit Mondal (owner, LALSNIG Consulting)
 **Delivery:** Anupam Mondal
-**Charter date:** 23 August 2026
+**Charter date:** 23 August 2026 · **Revised:** 24 August 2026 (positioning)
 **Status:** Active — Phase 1 live, awaiting sign-off
 
 ---
 
 ## 1. Why this project exists
 
-LALSNIG Consulting sells expertise that is invisible until someone explains it: why a belt mistracks,
-where a plant's throughput actually leaks, what a maintenance regime is worth. Today that explanation
-lives in an eight-page PDF deck that has to be emailed to one person at a time.
+LALSNIG Consulting sells expertise that is invisible until someone explains it: where a plant's
+throughput actually leaks, why the same defect keeps coming back, what a maintenance regime is worth.
+Today that explanation lives in an eight-page PDF deck that has to be emailed to one person at a time.
 
 The business needs a place where the explanation is *found* rather than *sent* — a website that:
 
-1. establishes the brand as a credible specialist rather than a generalist consultancy,
+1. establishes the brand as a credible **business excellence** partner with real engineering depth,
 2. is discoverable by plant managers and maintenance heads who search for their problem before they
    search for a supplier, and
 3. converts that visit into a phone call or an email.
@@ -30,7 +30,7 @@ the brand's first proper public surface.
 |---|---|---|---|
 | O1 | A single, agreed visual identity applied consistently | Design system signed off; every page built from tokens | Phase 1 |
 | O2 | A live, professional digital presence | Site reachable at a public URL, mobile-usable, accessible | Phase 1 |
-| O3 | Discoverable for problem-led and service-led searches | Indexed pages ranking for the Tier-1 keyword set | Phase 3 |
+| O3 | Discoverable for problem-led and method-led searches | Indexed pages ranking for the Tier-1 keyword set in [06](06-keyword-research.md) | Phase 3 |
 | O4 | Enquiries arrive through the site | Tracked email/phone/form conversions per month | Phase 4 |
 | O5 | Content compounds rather than decays | Growing non-brand organic sessions quarter on quarter | Phase 5 |
 
@@ -42,7 +42,7 @@ the brand's first proper public surface.
 - A responsive, accessible, SEO-optimised website built in HTML5 + Bootstrap 5
 - Keyword research, on-page SEO specification, content and image strategy
 - Royalty-free imagery, licensed and self-hosted
-- Structured data (Organization, ProfessionalService, Person, FAQPage)
+- Structured data (Organization, ProfessionalService, Person, OfferCatalog, FAQPage)
 - Hosting and continuous deployment on GitHub Pages
 - Project management documentation (this set)
 
@@ -90,6 +90,20 @@ delivery decision.
 | **Two-person subject-matter capacity** | Content velocity is capped by SME review time, not by writing time. The editorial calendar in [08](08-content-strategy.md) is sized accordingly. |
 | **`robots.txt` limitation** | On a `github.io` project path, `robots.txt` at the repo root is *not* honoured by crawlers — only the one at the domain root is. Indexing control relies on per-page `<meta name="robots">` until a custom domain is attached. See [11-deployment-runbook.md](11-deployment-runbook.md#robotstxt-caveat). |
 | **No paid SEO tooling yet** | Search volume and difficulty figures must come from Google Keyword Planner and Search Console, not from estimates. |
+
+## 6b. Positioning
+
+**LALSNIG Consulting is a business excellence consultancy.** Lean manufacturing, Lean Six Sigma,
+industrial engineering, data analytics, training and maintenance/reliability are the service lines.
+
+**Conveyor and bulk material handling is a named specialist practice, not the headline.** It is the
+founder's 18-year technical foundation, it differentiates the firm from generalist consultancies, and
+it remains the single most winnable position in search. It sits below the category claim on the site
+and it is not to be removed — see [06 §0](06-keyword-research.md#0-what-the-repositioning-costs-and-what-to-do-about-it)
+for why that combination is deliberate.
+
+> Changed 24 August 2026 at the sponsor's direction, from a conveyor-led to a business-excellence-led
+> position. The SEO consequences are documented rather than assumed.
 
 ## 7. Assumptions
 

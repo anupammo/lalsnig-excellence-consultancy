@@ -1,6 +1,7 @@
 # LALSNIG Consulting — website
 
-Conveyor belt consulting, operational excellence and workforce capability.
+Business excellence consulting — lean manufacturing, Lean Six Sigma, industrial engineering and
+workforce capability, with a specialist practice in conveyor and bulk material handling.
 Static site: **HTML5 + Bootstrap 5.3.3 + vanilla JS**, deployed to GitHub Pages by GitHub Actions.
 
 **Live:** https://anupammo.github.io/lalsnig-excellence-consultancy/
@@ -26,7 +27,8 @@ specification, content and image strategy, the QA gate, the deployment runbook a
 ## Repository layout
 
 ```
-index.html                      Phase 1 site — the whole company deck as one narrative
+index.html                      Phase 1 site — the whole company deck as one narrative,
+                                led by business excellence with conveyor as a named specialism
 brand.html                      Design-system sign-off page (noindex)
 404.html                        Branded not-found page (noindex)
 robots.txt  sitemap.xml  site.webmanifest  .nojekyll
