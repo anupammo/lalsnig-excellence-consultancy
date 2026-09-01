@@ -115,10 +115,17 @@ Lighthouse 12, headless Chrome, mobile preset (4× CPU throttle, simulated slow 
 > as the score; quote the median and the range, and replace both with Search Console field data once
 > Phase 4 lands. Lab numbers describe the machine as much as the site.
 
-**Re-measured on `lalsnigconsulting.com` after the domain move and the repositioning:**
-mobile **91 / 92 / 92** across three runs, Accessibility, Best Practices and SEO **100** on all three,
-LCP 2.3–2.8 s, CLS **0**. Consistently a few points below the `github.io` figures — the custom domain
-adds a DNS lookup and its edge cache is colder — and still above the ≥ 90 budget.
+**Re-measured on `lalsnigconsulting.com`** after the domain move and the repositioning:
+mobile **91 / 92 / 92**, all other categories **100**, LCP 2.3–2.8 s, CLS **0**.
+
+**Re-measured again after Google Analytics 4 was added:** mobile **97 / 97 / 98**, Accessibility,
+Best Practices and SEO **100** on all three runs, LCP 2.3–2.5 s, TBT 30–110 ms, CLS **0**.
+
+> **GA4 did not measurably cost anything, and the earlier dip was not the domain.** Adding a
+> third-party script *raised* the measured score, which only makes sense once you notice the 91/92
+> runs were the first requests to a freshly-pointed domain with a cold CDN edge. GA4 loads `async`
+> and blocks nothing. The lesson is about measurement, not about GA: **a single run after any
+> infrastructure change is measuring the cache, not the site.** Wait, then measure three times.
 
 **What moved the numbers** (first measurement was Performance 84, LCP 4.2 s):
 
