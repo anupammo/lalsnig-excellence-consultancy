@@ -80,7 +80,7 @@ than against a mock-up.
 
 | Decision | Reason |
 |---|---|
-| **Self-host Bootstrap and all webfonts** | Removes two cross-origin connections from the critical path, improves LCP, and means the site has zero third-party requests — nothing to disclose in a privacy notice and nothing that breaks if a CDN does. |
+| **Self-host Bootstrap and all webfonts** | Removes two cross-origin connections from the critical path, improves LCP, and nothing breaks if a CDN does. The site had zero third-party requests until GA4 was added on 24 Aug 2026; that is now the single exception, and the rule still holds for everything else. |
 | **Single page, anchor-navigated** | Phase 1's job is brand sign-off and a credible presence, not topical coverage. Splitting into thin pages before the content exists would create pages with nothing to rank on. Phase 2 splits them once each has real depth. |
 | **Design tokens before components** | A colour or type change in Phase 3 must be a one-line edit, not a find-and-replace across pages. |
 | **Orange `#B4540A` for CTA fills, `#E46C0A` for accents** | The deck's signature orange only reaches 3.3:1 behind white text. Splitting the role keeps the brand colour visible *and* the buttons AA-compliant. Full reasoning in [04 §2](04-brand-design-system.md#the-one-rule-that-keeps-this-palette-accessible). |
@@ -163,8 +163,8 @@ that surround it, not by optimising one page harder.
 
 | # | Deliverable | Notes |
 |---|---|---|
-| 4.1 | Google Search Console — verified, sitemap submitted, coverage monitored | Do this the day the custom domain goes live, not later |
-| 4.2 | Analytics with a documented consent posture | GA4, or a cookieless option (Plausible/Umami) that keeps the "zero third-party tracking" property intact — **client decision** |
+| 4.1 | Google Search Console — verified, sitemap submitted, coverage monitored | ⛔ **Still outstanding.** Should have been done the day the custom domain went live |
+| 4.2 | Analytics with a documented consent posture | ✅ **GA4 `G-HFWSCJXX0Y` installed 24 Aug 2026** on `index.html` and `404.html`. The consent posture is **not** yet decided — GA4 sets cookies, so a privacy notice is now owed. See [10, known limitation 14](10-qa-definition-of-done.md#known-limitations-at-phase-1-close) |
 | 4.3 | Conversion events: phone tap, email click, form submit, lead-magnet download | |
 | 4.4 | CTA and conversion-rate optimisation pass | Hero CTA wording, mid-page CTAs on long articles, sticky mobile call button |
 | 4.5 | Core Web Vitals field monitoring | Lab scores are already good; field data is the one that ranks |

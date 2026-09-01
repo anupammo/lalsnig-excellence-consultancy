@@ -37,7 +37,7 @@ LALSNIG EXCELLENCE CONSULTANCY.pdf    Source company deck — brand and content 
 assets/
   css/brand.css                 Design tokens + component library  ← single source of visual truth
   css/fonts.css                 Self-hosted @font-face declarations
-  js/site.js                    Header shadow, scroll-spy, reveal, menu collapse
+  js/site.js                    Header shadow, scroll-spy, reveal, menu collapse, footer year
   fonts/                        10 woff2 files, 308 KB total
   img/                          Photography (WebP + JPEG), logo set, icons
   vendor/bootstrap/             Bootstrap 5.3.3, vendored

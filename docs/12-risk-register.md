@@ -19,7 +19,9 @@ Reviewed at every phase gate. Scoring: Likelihood × Impact, each 1–5.
 | **R12** | **Contact details go stale** — one wrong digit silently costs every lead on the page | 2 | 4 | **8** | **Prevent.** Single source in [docs/README](README.md#fast-facts); verified in the Definition of Done for every deploy |
 | **R13** | **Design decisions get relitigated late,** forcing rework across a completed site | 3 | 4 | **12** | **Prevent.** This is exactly why Phase 1 ships a live, signed-off style guide before any Phase 2 page is built. Token architecture also means a late colour change is a one-line edit rather than a rebuild |
 | **R14** | **Bootstrap or font dependency ages out** — security advisory or breaking release | 2 | 2 | **4** | **Monitor.** Versions pinned and vendored, so nothing changes underneath us. Quarterly review; re-run the QA gate after any bump |
-| **R15** | **Analytics never gets installed**, so nobody can tell whether any of this worked | 3 | 4 | **12** | **Mitigate.** Blocked on a client consent decision. Present the two options concretely — GA4, or a cookieless tool that preserves the site's zero-third-party property — rather than asking an open question |
+| ~~**R15**~~ | ~~Analytics never gets installed~~ | — | — | **closed** | ✅ **Resolved 24 Aug 2026.** GA4 `G-HFWSCJXX0Y` installed on the home and 404 pages |
+| **R22** | **GA4 sets cookies and there is no privacy notice or consent mechanism.** India's DPDP Act expects disclosure; GDPR expects prior consent for any EU visitor. The site currently has neither, and no privacy page at all | 4 | 3 | **12** | **Mitigate — needs a client decision.** Either (a) add a privacy page plus a consent banner that gates GA until accepted, or (b) switch to a cookieless tool (Plausible, Umami, Cloudflare Web Analytics) which needs no banner and restores the zero-cookie position. (b) is less work and less ongoing risk; (a) keeps GA4's reporting depth |
+| **R23** | **GA4 records pageviews only.** Phone taps, WhatsApp clicks and email clicks — the site's only conversions, since there is no form — are not tracked, so "did the site generate enquiries?" stays unanswerable | 4 | 3 | **12** | **Mitigate.** Configure the four events in [02, Phase 4.3](02-project-plan.md#phase-4--conversion--analytics). Without them GA4 measures traffic but not outcome, which is the question that actually matters |
 | **R16** | **Content published but not distributed.** Articles ship and nobody sees them | 3 | 3 | **9** | **Mitigate.** LinkedIn syndication is part of the article's definition of done, not an afterthought. The client's existing network is the strongest distribution channel available and it is free |
 | **R17** | **Trainer consent for name, photo and biography was assumed, not obtained** | 2 | 4 | **8** | **Prevent.** Explicit confirmation is a Phase 1 gate item ([03](03-progress-checklist.md#open-items-needing-the-client-)). Do not go live without it |
 | **R18** | **Scope creep from the Web Design & Development capability** — the site drifts into positioning itself as a web agency and dilutes the consulting identity | 2 | 3 | **6** | **Prevent.** Deliberate IA decision: it stays a paragraph under the services grid and gets no page of its own. Revisit only if it becomes a real revenue line ([05 §2](05-information-architecture.md#2-phase-2-target-sitemap)) |
@@ -35,7 +37,7 @@ Reviewed at every phase gate. Scoring: Likelihood × Impact, each 1–5.
 3. **R5** — no case studies (16)
 4. **R6** — the new category terms are far more contested than the old ones (15)
 5. **R19** — no pre-deploy gate while Actions is billing-blocked (12) · **R20** — specialism erosion (12)
-5. **R3** — raster-only logo (12) · **R4** — stock photography (12) · **R13** — late design churn (12) · **R15** — no analytics (12)
+5. **R22** — GA4 cookies with no privacy notice (12) · **R23** — no conversion events (12) · **R3** — raster-only logo (12) · **R4** — stock photography (12) · **R13** — late design churn (12) · **R15** — no analytics (12)
 
 Five of these are unblocked by a single conversation with the client — the address, the case-study
 permission, the vector logo, the photography, and the GitHub billing. That conversation is the
@@ -52,3 +54,4 @@ highest-value action available on this project right now, and it costs nothing.
 | 2026-08-24 | Delivery | Site live via branch deployment. R19 rescored 15 → 12: the deploy works, only the automatic gate is missing |
 | 2026-08-24 | Delivery | Repositioned to business excellence. R6 rescored 10 → 15; R20 added to protect the specialism |
 | 2026-08-24 | Delivery | Custom domain live. R8 closed; R21 added after the migration broke the 404 page and every canonical |
+| 2026-08-24 | Delivery | GA4 installed at the client's instruction. R15 closed; R22 (no consent notice) and R23 (pageviews only) added |

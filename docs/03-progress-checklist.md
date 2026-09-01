@@ -16,7 +16,7 @@ The status board. Tick boxes here, not in chat.
 | 1 — Brand foundation & digital presence | 52 | 48 | 4 | 0 |
 | 2 — Content & multi-page expansion | 30 | 0 | 26 | 4 |
 | 3 — Authority content | 16 | 0 | 16 | 0 |
-| 4 — Conversion & analytics | 13 | 0 | 12 | 1 |
+| 4 — Conversion & analytics | 15 | 2 | 12 | 1 |
 | 5 — Scale & maintain | 8 | 0 | 8 | 0 |
 
 ---
@@ -108,6 +108,12 @@ The status board. Tick boxes here, not in chat.
 - [x] Run Lighthouse against the deployed URL — mobile **86–98 (median 96) / 100 / 100 / 100**, desktop **99 / 100 / 100 / 100**; see [10 §4](10-qa-definition-of-done.md#measured--24-august-2026-live-url)
 - [x] Cut mobile page weight 697 KB → ~330 KB and LCP 4.2 s → 2.4 s (responsive images, scrim-aware compression, forced-reflow fix)
 - [x] Fix two contrast failures axe found on the live pages (numbered service chips, `<code>` on navy)
+- [x] Ranjit Mondal experience updated 18+ → **19+ years** (6 places incl. schema and FAQ)
+- [x] LinkedIn profile links on both trainer cards, and `sameAs` for Ruturaj Jadhav in the schema
+- [x] Purpose-built 1200×630 social preview card, keyword-named
+- [x] WhatsApp CTA — contact panel button, contact list, footer link and a floating action
+- [x] Developer credit in the footer and a `developer` meta tag
+- [x] GA4 installed (see Phase 4 for what it still does not measure)
 - [x] **Reposition the content from conveyor-led to business-excellence-led** — services grid, specialist practice section, FAQ, schema, nav and footer restructured; SEO consequences recorded in [06 §0](06-keyword-research.md#0-what-the-repositioning-costs-and-what-to-do-about-it)
 - [x] Add same-page fragment validation to `scripts/check-links.mjs` — the rename left a dead `#capability` link in the footer that nothing would have caught
 
@@ -197,10 +203,11 @@ The status board. Tick boxes here, not in chat.
 
 ## Phase 4 — Conversion & analytics
 
-- [ ] Google Search Console verified
+- [ ] 👤 Google Search Console verified for `lalsnigconsulting.com`
 - [ ] `sitemap.xml` submitted
-- [ ] 👤 Analytics platform + consent posture decided ⛔ blocks the rest of 4
-- [ ] Analytics installed
+- [x] Analytics platform decided — **GA4 `G-HFWSCJXX0Y`** (client instruction, 24 Aug 2026)
+- [x] Analytics installed on `index.html` and `404.html`
+- [ ] 👤 **Consent posture still undecided** — GA4 sets cookies and the site has no privacy notice. See risks R22/R23
 - [ ] Event: phone tap
 - [ ] Event: email click
 - [ ] Event: form submit
@@ -241,4 +248,4 @@ The status board. Tick boxes here, not in chat.
 | 13 | **Google Search Console: add `lalsnigconsulting.com`, submit `sitemap.xml`, run Change of Address** from the old github.io property | All organic measurement | 1→4 |
 | 9 | Supply professional photography | Replacing stock + deck-extracted portraits | 2 |
 | 10 | Approve case studies / obtain end-client permission | Highest-value credibility asset | 2 |
-| 11 | Decide the analytics/consent posture | All of Phase 4 | 4 |
+| 11 | Decide the **consent posture** — privacy notice + banner, or swap GA4 for a cookieless tool | Legal exposure under DPDP/GDPR (R22) | 4 |

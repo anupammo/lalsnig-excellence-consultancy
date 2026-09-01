@@ -10,14 +10,14 @@ Keyword assignments live in [06-keyword-research.md](06-keyword-research.md); th
 
 | Element | Rule | Live example (`index.html`) |
 |---|---|---|
-| `<title>` | 50–65 chars. Primary keyword first, brand last, separated by a pipe | `Business Excellence Consultants & Lean Six Sigma Training \| LALSNIG` — 68 chars |
+| `<title>` | 50–65 chars. Primary keyword first, brand last, separated by a pipe | `Business Excellence Consultants & Lean Six Sigma \| LALSNIG` — 58 chars |
 | `<meta name="description">` | 140–160 chars. Written to earn the click, not to rank. Include the primary keyword and a concrete benefit | 147 chars |
 | `<link rel="canonical">` | **Absolute URL, on every page, always** — including the page's own canonical | ✅ |
 | `<meta name="robots">` | `index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1` on public pages; `noindex, follow` on `brand.html` and `404.html` | ✅ |
 | `<html lang>` | `en-IN` | ✅ |
 | `<meta name="viewport">` | `width=device-width, initial-scale=1` | ✅ |
 | `<meta name="theme-color">` | `#0B1F35` | ✅ |
-| Open Graph | `og:type`, `og:site_name`, `og:locale`, `og:title`, `og:description`, `og:url`, `og:image` (1200×630 min; ours is 1920×1080), `og:image:width/height/alt` | ✅ |
+| Open Graph | `og:type`, `og:site_name`, `og:locale`, `og:title`, `og:description`, `og:url`, `og:image` (a purpose-built 1200×630 card, not a photo or a screenshot), `og:image:width/height/type/alt` | ✅ |
 | Twitter | `twitter:card=summary_large_image`, `twitter:title`, `twitter:description`, `twitter:image` | ✅ |
 | Icons | 32 px favicon, 192 px, 180 px Apple touch, `site.webmanifest` | ✅ |
 
@@ -120,7 +120,7 @@ a manual-action risk, not just a wasted opportunity.
 
 | Practice | Implementation |
 |---|---|
-| Zero third-party requests | Bootstrap and all fonts self-hosted. No CDN, no font API, no tracker |
+| Third-party requests | **One** — Google Analytics 4 (`googletagmanager.com`), added 24 Aug 2026 on the client's instruction. Bootstrap and every font remain self-hosted, so GA is the only cross-origin request on the page |
 | Critical fonts preloaded | Inter variable + Barlow 700, latin subsets |
 | `font-display: swap` | Every face |
 | Deferred JS | Both scripts carry `defer`; nothing blocks parsing |

@@ -73,6 +73,25 @@ crop.
 > Where a photographer name is not listed, it was not verified at sourcing time. Open the linked photo
 > page to read the current credit before using the file anywhere attribution is expected.
 
+### Social preview card
+
+| File | Size | Origin |
+|---|---|---|
+| `business-excellence-consultants-lalsnig-consulting.jpg` | 1200×630 · 67 KB | Purpose-built card, rendered from the site's own `brand.css` in headless Chrome so the type, palette and logo lockup are the production ones rather than an approximation |
+
+Referenced by `og:image`, `twitter:image` and the `Organization` `image` property. **Filename carries
+the primary keyword**, which is what a shared link's URL preview shows.
+
+> **Why not a page screenshot.** The original request was to use a screenshot of the site. The one
+> supplied was of the **404 page** — sharing any link would have shown "This one went off track" as
+> the preview. A screenshot is also the wrong shape: at 1200×630 a full page renders as unreadable
+> 6 px type. A social card is a poster, not a thumbnail: one headline, one logo, one URL, all legible
+> at the size it is actually seen.
+
+**Rules for replacing it:** exactly 1200×630, under 300 KB, no text smaller than ~24 px at that size,
+and check it in the LinkedIn Post Inspector and Facebook Sharing Debugger — both cache aggressively,
+so an update needs a manual re-scrape.
+
 ### Brand assets — derived from the client's own deck
 
 | File | Size | Origin |

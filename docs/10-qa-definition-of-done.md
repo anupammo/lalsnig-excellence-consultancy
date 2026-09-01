@@ -85,7 +85,7 @@ pairing gets measured with it before it ships.
 | CLS | < 0.1 | Lighthouse |
 | INP | < 200 ms | Field data |
 | Total page weight | < 2 MB | Network panel |
-| Third-party requests | **0** | Network panel — this is a design property, not an aspiration |
+| Third-party requests | **1** (Google Analytics only) | Network panel — everything else is self-hosted, and that stays the rule |
 | Webfont payload | ≤ 350 KB | Currently 308 KB |
 | Render-blocking resources | CSS only | Network panel |
 
@@ -107,7 +107,7 @@ Lighthouse 12, headless Chrome, mobile preset (4× CPU throttle, simulated slow 
 | CLS | **0** (every run) | 0 |
 | TBT | 30 – 410 ms | 0 ms |
 | Page weight | ~330 KB | — |
-| Third-party requests | **0** | 0 |
+| Third-party requests | **0** at the time of measurement | 0 |
 
 > **On that Performance spread.** The 86–98 range is entirely Total Blocking Time, which varies with
 > CPU contention on the measuring machine — the two low runs happened while other work was running on
@@ -159,6 +159,7 @@ Run the per-page checklist in [07 §8](07-seo-onpage-spec.md#8-per-page-pre-publ
 - [ ] Contact details match [01 §fast-facts](README.md#fast-facts) exactly — one wrong digit costs every lead on the page
 - [ ] Every image is licence-cleared and recorded in [09 §2](09-image-asset-strategy.md#2-image-manifest--phase-1)
 - [ ] Every claim is defensible; no invented statistics
+- [ ] Experience figures match the client's current record (Ranjit Mondal: 19+ years as of Aug 2026 — this increments annually and appears in 6 places)
 - [ ] Dates and experience figures current
 
 ## 7. Automated checks
@@ -218,7 +219,9 @@ A phase closes when **all** of these are true:
 | 3 | All photography is stock | Client | Real site photography |
 | ~~4~~ | ~~`robots.txt` is inert on a `github.io` project path~~ | — | ✅ **Cleared 24 Aug 2026** — custom domain live |
 | 5 | No business address ⇒ no `LocalBusiness` schema, no Google Business Profile | Client | Confirmed address |
-| 6 | No analytics ⇒ no conversion data | Client | Phase 4 consent decision |
+| ~~6~~ | ~~No analytics ⇒ no conversion data~~ | — | ✅ **Cleared 24 Aug 2026** — GA4 `G-HFWSCJXX0Y` installed |
+| 14 | **No cookie/privacy notice, but GA4 now sets cookies.** India's DPDP Act and GDPR (for any EU visitor) both expect disclosure and, for GDPR, prior consent | Client | A privacy page plus a consent banner, or switching to a cookieless analytics tool |
+| 15 | Conversion events not yet configured — GA4 records pageviews only, so phone taps, WhatsApp clicks and email clicks are invisible | Delivery | Phase 4 event tracking |
 | 7 | No contact form — enquiries rely on `tel:`/`mailto:` | Delivery | Phase 2 form provider |
 | ~~8~~ | ~~Lighthouse and Rich Results not run against a live URL~~ | — | ✅ **Cleared 24 Aug 2026** — see §4 |
 | 9 | No pre-deploy gate: Actions is billing-blocked, so branch deployment publishes whatever is pushed | Client | Clearing GitHub billing. Until then `node scripts/check-links.mjs` before every push |

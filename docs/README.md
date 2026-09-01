@@ -24,7 +24,9 @@ Source of truth for scope, sequence and status is **[03-progress-checklist.md](0
 |---|---|
 | **Client** | LALSNIG Consulting (Lalsnig Excellence Consultancy) |
 | **Business** | Business excellence consulting — lean manufacturing, Lean Six Sigma, industrial engineering, data analytics and workforce capability, with a specialist practice in conveyor and bulk material handling |
-| **Primary contact** | Mr. Ranjit Mondal — +91 90517 96271 — ranjit_jumech1@yahoo.co.in |
+| **Primary contact** | Mr. Ranjit Mondal — +91 90517 96271 (phone &amp; WhatsApp) — ranjit_jumech1@yahoo.co.in |
+| **LinkedIn** | [Ranjit Mondal](https://www.linkedin.com/in/ranjit-mondal-316301ab/) · [Ruturaj Jadhav](https://www.linkedin.com/in/ruturaj-jadhav-8b5895226/) |
+| **Analytics** | Google Analytics 4 — `G-HFWSCJXX0Y` (pageviews only; no consent notice yet — risks R22/R23) |
 | **Repository** | https://github.com/anupammo/lalsnig-excellence-consultancy |
 | **Live URL (Phase 1)** | https://lalsnigconsulting.com/ |
 | **Design-system sign-off page** | https://lalsnigconsulting.com/brand.html |

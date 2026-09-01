@@ -296,6 +296,11 @@ img { max-width: 100%; height: auto; }
 
 .ls-btn__icon { width: 1.05em; height: 1.05em; flex: none; }
 
+/* WhatsApp brand green. #128C7E is the darker of the two official greens and is
+   the one that clears AA behind white text (5.05:1); #25D366 does not (1.9:1). */
+.ls-btn--whatsapp { --_bg: #128C7E; --_fg: var(--ls-white); --_bd: #128C7E; }
+.ls-btn--whatsapp:hover { --_bg: #0E6E63; --_bd: #0E6E63; color: var(--ls-white); }
+
 /* --------------------------------------------------------------------------
    6. HEADER / NAV
    -------------------------------------------------------------------------- */
@@ -641,6 +646,47 @@ img { max-width: 100%; height: auto; }
   margin-top: var(--ls-space-6); padding-top: var(--ls-space-4);
   font-size: var(--ls-fs-xs);
 }
+
+/* --------------------------------------------------------------------------
+   12b. PROFILE LINK + FLOATING WHATSAPP ACTION
+   -------------------------------------------------------------------------- */
+.ls-profile-link {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-family: var(--ls-font-display); font-weight: 600; font-size: var(--ls-fs-sm);
+  letter-spacing: .02em;
+  color: var(--ls-navy-600); text-decoration: none;
+  border-bottom: 1px solid var(--ls-border-strong);
+  padding-bottom: .1rem;
+  transition: color var(--ls-dur) var(--ls-ease), border-color var(--ls-dur) var(--ls-ease);
+}
+.ls-profile-link svg { width: 1.05rem; height: 1.05rem; flex: none; }
+.ls-profile-link:hover { color: var(--ls-orange-700); border-color: var(--ls-orange-500); }
+
+/* Floating WhatsApp action. Sits above the fold on every scroll position because
+   on a phone, on a plant floor, the tap target should never be hunted for. */
+.ls-wa-fab {
+  position: fixed; z-index: 1040;
+  right: clamp(.85rem, 2vw, 1.5rem);
+  bottom: clamp(.85rem, 2vw, 1.5rem);
+  display: inline-flex; align-items: center; gap: .55rem;
+  background: #128C7E; color: var(--ls-white);
+  padding: .8rem 1.15rem;
+  border-radius: var(--ls-radius-pill);
+  font-family: var(--ls-font-display); font-weight: 600; font-size: 1rem;
+  letter-spacing: .02em; text-decoration: none;
+  box-shadow: 0 6px 16px rgba(7,23,41,.24), 0 14px 40px rgba(7,23,41,.18);
+  transition: background var(--ls-dur) var(--ls-ease), transform var(--ls-dur) var(--ls-ease),
+              box-shadow var(--ls-dur) var(--ls-ease);
+}
+.ls-wa-fab svg { width: 1.4rem; height: 1.4rem; flex: none; }
+.ls-wa-fab:hover { background: #0E6E63; color: var(--ls-white); transform: translateY(-2px); box-shadow: var(--ls-shadow-3); }
+.ls-wa-fab:active { transform: translateY(0); }
+/* Below sm the label is dropped to a circular icon so it never covers content. */
+@media (max-width: 575.98px) {
+  .ls-wa-fab { padding: .85rem; border-radius: 50%; }
+  .ls-wa-fab span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+@media print { .ls-wa-fab { display: none !important; } }
 
 /* --------------------------------------------------------------------------
    13. MOTION

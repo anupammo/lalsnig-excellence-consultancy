@@ -125,6 +125,25 @@ for (const page of PAGES) {
 }
 
 /* --- 3b. Non-HTML referrers, so the orphan report below is trustworthy ---- */
+
+// Same-origin absolute URLs: og:image, twitter:image and JSON-LD point at assets
+// with a full https:// URL, which the loop above skips as "external". Without
+// this the social card would be reported as an orphan and could be deleted.
+const ORIGIN = 'https://lalsnigconsulting.com/';
+for (const page of PAGES) {
+  const abs = join(ROOT, page);
+  if (!existsSync(abs)) continue;
+  const html = readFileSync(abs, 'utf8');
+  for (const m of html.matchAll(new RegExp(ORIGIN.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '([^"\\s\\\\]+)', 'g'))) {
+    const rel = m[1].split(/[?#]/)[0];
+    if (!rel || rel.endsWith('/')) continue;
+    if (existsSync(join(ROOT, rel))) referenced.add(rel);
+    else if (/\.(png|jpe?g|webp|svg|ico|woff2?|css|js|xml|txt|webmanifest)$/i.test(rel)) {
+      fail(page, `absolute URL points at a file that does not exist -> ${ORIGIN}${rel}`);
+    }
+  }
+}
+
 // The manifest points at the app icons and the CSS points at the webfonts;
 // neither is reachable from an HTML attribute.
 for (const file of ['site.webmanifest', 'assets/css/fonts.css', 'assets/css/brand.css']) {
